@@ -1,11 +1,70 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import NextButton from "../components/NextButton1";
+import ProgressBar from "../components/ProgressBar";
+import StartComent from "../components/StartComent";
+import LanguageButton from "../components/LanguageButton";
+
+import KoreaIcon   from "../assets/koreaLogo.svg";
+import JapanIcon   from "../assets/japanLogo.svg";
+import AmericaIcon from "../assets/americaLogo.svg";
+
+const LANGUAGES = [
+  { icon: KoreaIcon,   title: "한국어", subtitle: "한국어",  languageCode: "ko" },
+  { icon: JapanIcon,   title: "일본어", subtitle: "日本語",  languageCode: "ja" },
+  { icon: AmericaIcon, title: "영어",   subtitle: "English", languageCode: "en" },
+];
 
 function SelectLanguage() {
+  const navigate = useNavigate();
+  const [selections, setSelections] = useState(
+    Object.fromEntries(LANGUAGES.map((l) => [l.languageCode, null]))
+  );
+
+  const handleSelect = ({ languageCode, level }) => {
+    setSelections((prev) => ({ ...prev, [languageCode]: level }));
+  };
+
+  // 하나라도 선택되면 다음 버튼 활성화
+  const isValid = Object.values(selections).some(Boolean);
+
+ const handleNext = () => {
+  const payload = Object.entries(selections)
+    .filter(([, level]) => level)
+    .map(([languageCode, level]) => ({ languageCode, level }));
+    console.log("백엔드 전송 payload:", payload);
+    navigate("/interest");
+    // TODO: API 호출
+  };
+
   return (
     <Wrapper>
-      <Title>언어 선택 페이지</Title>
-      <NextButton isValid={true} />
+      <Top>
+        <ProgressBar step={2} />
+      </Top>
+
+      <Middle>
+        <StartComent coment={"사용할 수 있는<br/>언어를 선택해주세요"} />
+      </Middle>
+
+      <ButtonArea>
+        {LANGUAGES.map((lang) => (
+          <LanguageButton
+            key={lang.languageCode}
+            icon={lang.icon}
+            title={lang.title}
+            subtitle={lang.subtitle}
+            languageCode={lang.languageCode}
+            selectedLevel={selections[lang.languageCode]}
+            onSelect={handleSelect}
+          />
+        ))}
+      </ButtonArea>
+
+      <Bottom>
+        <NextButton isValid={isValid} onClick={handleNext} />
+      </Bottom>
     </Wrapper>
   );
 }
@@ -15,16 +74,31 @@ const Wrapper = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 24px;
-
+  padding: 24px 0;
+  box-sizing: border-box;
 `;
 
+const Top = styled.div`
+  display: flex;
+  justify-content: center;
+`;
 
-const Title = styled.div`
-  font-size: 20px;
-  font-weight: 600;
+const Middle = styled.div`
+  padding: 2.9375rem 0 1.5rem;
+`;
+
+const ButtonArea = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 1.3125rem;
+  flex: 1;
+`;
+
+const Bottom = styled.div`
+  display: flex;
+  justify-content: center;
+  padding: 0 1.3125rem;
 `;
 
 export default SelectLanguage;

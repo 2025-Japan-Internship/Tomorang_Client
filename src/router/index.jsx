@@ -2,6 +2,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import MainLayout from "../layouts/MainLayout";
 import SetLanguage from "../pages/SelectLanguage";
+import SetInterest from "../pages/SelectInterest";
+import MakeTravelerProfile from "../pages/MakeTravelerProfile";
 import Temp from "../pages/Temp";
 import StartPage from "../pages/StartPage";
 
@@ -11,6 +13,8 @@ function Router() {
       <Routes>
           <Route path="/" element={<Temp />} />
           <Route path="/language" element={<SetLanguage />} />
+          <Route path="/interest" element={<SetInterest />} />
+          <Route path="/make-traveler-profile" element={<MakeTravelerProfile />} />
         </Routes>
     </BrowserRouter>
   );
