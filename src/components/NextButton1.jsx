@@ -11,7 +11,9 @@ function NextButton({ isValid }) {
 }
 
 const Button = styled.button`
-  width: 348px;
+  width: 100%;
+  max-width: 348px;
+
   height: 56px;
   border-radius: 12px;
   border: none;
