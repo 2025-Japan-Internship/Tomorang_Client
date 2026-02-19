@@ -1,9 +1,40 @@
+import { useState } from "react";
 import styled from "styled-components";
 import NextButton from "../components/NextButton1";
 import ProgressBar from "../components/ProgressBar";
 import StartComent from "../components/StartComent";
+import LanguageButton from "../components/LanguageButton";
+
+import KoreaIcon   from "../assets/koreaLogo.svg";
+import JapanIcon   from "../assets/japanLogo.svg";
+import AmericaIcon from "../assets/americaLogo.svg";
+
+const LANGUAGES = [
+  { icon: KoreaIcon,   title: "한국어", subtitle: "Korean",  languageCode: "ko" },
+  { icon: JapanIcon,   title: "일본어", subtitle: "日本語",  languageCode: "ja" },
+  { icon: AmericaIcon, title: "영어",   subtitle: "English", languageCode: "en" },
+];
 
 function SelectLanguage() {
+  const [selections, setSelections] = useState(
+    Object.fromEntries(LANGUAGES.map((l) => [l.languageCode, null]))
+  );
+
+  const handleSelect = ({ languageCode, level }) => {
+    setSelections((prev) => ({ ...prev, [languageCode]: level }));
+  };
+
+  // 하나라도 선택되면 다음 버튼 활성화
+  const isValid = Object.values(selections).some(Boolean);
+
+  const handleNext = () => {
+    const payload = Object.entries(selections)
+      .filter(([, level]) => level)
+      .map(([languageCode, level]) => ({ languageCode, level }));
+    console.log("백엔드 전송 payload:", payload);
+    // TODO: API 호출
+  };
+
   return (
     <Wrapper>
       <Top>
@@ -11,55 +42,60 @@ function SelectLanguage() {
       </Top>
 
       <Middle>
-        <Greeting>
-          <StartComent coment={'처음만났네요,<br/>반가워요'} />
-        </Greeting>
-        <Title>하하</Title>
+        <StartComent coment={"사용할 수 있는<br/>언어를 선택해주세요"} />
       </Middle>
 
+      <ButtonArea>
+        {LANGUAGES.map((lang) => (
+          <LanguageButton
+            key={lang.languageCode}
+            icon={lang.icon}
+            title={lang.title}
+            subtitle={lang.subtitle}
+            languageCode={lang.languageCode}
+            selectedLevel={selections[lang.languageCode]}
+            onSelect={handleSelect}
+          />
+        ))}
+      </ButtonArea>
+
       <Bottom>
-        <NextButton isValid={true} />
+        <NextButton isValid={isValid} onClick={handleNext} />
       </Bottom>
     </Wrapper>
   );
 }
 
 const Wrapper = styled.div`
-  min-height: 95vh;
+  min-height: 100vh;
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* 상/중/하 배치 */
-  padding: 24px 0px 24px 0px;
+  padding: 24px 0;
+  box-sizing: border-box;
 `;
 
 const Top = styled.div`
   display: flex;
-  justify-content: center; /* 상단 가로 중앙 */
+  justify-content: center;
 `;
 
 const Middle = styled.div`
+  padding: 2.9375rem 0 1.5rem;
+`;
+
+const ButtonArea = styled.div`
   display: flex;
-  flex-direction: column; /* 세로 정렬 */
-  align-items: flex-start; /* 왼쪽 정렬 */
-  justify-content: flex-start; /* 위쪽에 붙이기 */
-  gap: 16px;
-  flex: 1; /* Middle이 남은 공간 다 차지하게 */
-  padding-top: 2.9375rem; /* optional: 위쪽 여백 조금 줌 */
-`;
-
-
-const Greeting = styled.div`
-`;
-
-const Title = styled.div`
-  font-size: 20px;
-  font-weight: 600;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 1.3125rem;
+  flex: 1;
 `;
 
 const Bottom = styled.div`
   display: flex;
-  justify-content: center; /* 하단 가로 중앙 */
+  justify-content: center;
+  padding: 0 1.3125rem;
 `;
 
 export default SelectLanguage;
