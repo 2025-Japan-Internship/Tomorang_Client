@@ -30,11 +30,12 @@ const Button = styled.button`
     disabled ? "#FFFFFF" : "#111111"};
 
   font-family: "Inter", sans-serif;
-  font-weight: 400;
+  font-weight: midium;
   font-size: 14px;
   line-height: 100%;
   letter-spacing: 0%;
 
+  
   ${({ disabled }) =>
     !disabled &&
     `
