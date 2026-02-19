@@ -8,11 +8,9 @@ function Router() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route element={<MainLayout />}>
           <Route path="/" element={<Temp />} />
           <Route path="/language" element={<SetLanguage />} />
-        </Route>
-      </Routes>
+        </Routes>
     </BrowserRouter>
   );
 }
