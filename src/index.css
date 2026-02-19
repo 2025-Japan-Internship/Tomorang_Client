@@ -1,4 +1,6 @@
-/* :root {
+
+/*:root {
+>>>>>>> f464dfb4e9cbd2069bdfe7d8841e0249241b20ab
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -65,7 +67,9 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
-} */
+
+}
+*/
 *{
   margin: 0;
   padding: 0;
