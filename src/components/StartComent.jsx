@@ -3,7 +3,7 @@
 import styled from "styled-components";
 import Logo from "../assets/logoIcon.svg";
 
-function StartComent({coment}) {
+function StartComent({ coment }) {
   return (
     <Wrapper>
       <Image src={Logo} alt="로고" />
@@ -16,8 +16,8 @@ function StartComent({coment}) {
 
 const Wrapper = styled.div`
   display: flex;
-  flex-direction: column; /* 위-아래 배치 */
-  gap: 1.0031rem; /* 로고와 글 사이 간격 */
+  flex-direction: column;
+  gap: 1.0031rem;
   margin-left: 1.8125rem;
 `;
 
@@ -31,8 +31,10 @@ const TextWrapper = styled.div`
     font-family: 'Pretendard', sans-serif;
     font-weight: 700;
     font-size: 28px;
-    line-height: 100%;
+    line-height: 38px;
+    letter-spacing: -0.035em; /* -3.5% */
     color: #000;
+    margin: 0;
   }
 `;
 
