@@ -68,15 +68,15 @@ const Button = styled.div`
   gap: 16px;
   width: 100%;
   height: 3.75rem;
-  padding: 0 14px;
+  padding: 0 12px;
   box-sizing: border-box;
   cursor: pointer;
   background-color: ${({ $active }) => ($active ? "#C5F598" : "#fff")};
 `;
 
 const IconImg = styled.img`
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   object-fit: cover;
   flex-shrink: 0;
@@ -122,14 +122,15 @@ const StepRow = styled.div`
 const StepText = styled.span`
   display: block;
   font-size: 0.875rem;
-  font-weight: 500;
-  color: #333;
+  font-weight: 400;
+  color: #ACACAC;
   margin-bottom: 5px;
 `;
 
 const DotsRow = styled.div`
   display: flex;
   gap: 4px;
+  padding-left: 1px;
 `;
 
 const Dot = styled.div`

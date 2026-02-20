@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import NextButton from "../components/NextButton1";
 import ProgressBar from "../components/ProgressBar";
@@ -10,12 +11,13 @@ import JapanIcon   from "../assets/japanLogo.svg";
 import AmericaIcon from "../assets/americaLogo.svg";
 
 const LANGUAGES = [
-  { icon: KoreaIcon,   title: "한국어", subtitle: "Korean",  languageCode: "ko" },
+  { icon: KoreaIcon,   title: "한국어", subtitle: "한국어",  languageCode: "ko" },
   { icon: JapanIcon,   title: "일본어", subtitle: "日本語",  languageCode: "ja" },
   { icon: AmericaIcon, title: "영어",   subtitle: "English", languageCode: "en" },
 ];
 
 function SelectLanguage() {
+  const navigate = useNavigate();
   const [selections, setSelections] = useState(
     Object.fromEntries(LANGUAGES.map((l) => [l.languageCode, null]))
   );
@@ -27,11 +29,12 @@ function SelectLanguage() {
   // 하나라도 선택되면 다음 버튼 활성화
   const isValid = Object.values(selections).some(Boolean);
 
-  const handleNext = () => {
-    const payload = Object.entries(selections)
-      .filter(([, level]) => level)
-      .map(([languageCode, level]) => ({ languageCode, level }));
+ const handleNext = () => {
+  const payload = Object.entries(selections)
+    .filter(([, level]) => level)
+    .map(([languageCode, level]) => ({ languageCode, level }));
     console.log("백엔드 전송 payload:", payload);
+    navigate("/interest");
     // TODO: API 호출
   };
 
