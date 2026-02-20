@@ -7,12 +7,14 @@ import MakeTravelerProfile from "../pages/MakeTravelerProfile";
 import WelcomePage from "../pages/WelcomePage";
 import Temp from "../pages/Temp";
 import StartPage from "../pages/StartPage";
+import Login from "../pages/LoginPage";
 
 function Router() {
   return (
     <BrowserRouter>
       <Routes>
-          <Route path="/" element={<Temp />} />
+          <Route path="/" element={<StartPage />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/language" element={<SetLanguage />} />
           <Route path="/interest" element={<SetInterest />} />
           <Route path="/make-traveler-profile" element={<MakeTravelerProfile />} />
