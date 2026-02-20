@@ -1,14 +1,16 @@
 import React, {useState,useEffect} from "react";
 import logo from "../assets/logo.svg";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 function StartPage(){
+    const navigate = useNavigate();
     return(
         <Container>
             <Logo src={logo} alt="로고"></Logo>
             <Catchphrase>나의 첫 번째 로컬 친구, 토모랑</Catchphrase>
-            <LoginButton>로그인</LoginButton>
-            <SignupButton>회원가입</SignupButton>
+            <LoginButton onClick={() => navigate("/login")}>로그인</LoginButton>
+            <SignupButton onClick={() => navigate("/role")}>회원가입</SignupButton>
         </Container>
     )
 }
