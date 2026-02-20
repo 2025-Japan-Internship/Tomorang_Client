@@ -5,6 +5,7 @@ import SetLanguage from "../pages/SelectLanguage";
 import Temp from "../pages/Temp";
 import StartPage from "../pages/StartPage";
 import Login from "../pages/LoginPage";
+import RoleSelectPage from "../pages/RoleSelectPage";
 
 function Router() {
   return (
@@ -12,6 +13,7 @@ function Router() {
       <Routes>
           <Route path="/" element={<StartPage />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/role" element={<RoleSelectPage />} />
           <Route path="/language" element={<SetLanguage />} />
         </Routes>
     </BrowserRouter>
