@@ -57,7 +57,7 @@ function MakeTravelerProfile({ interests = [] }) {
   return (
     <Wrapper>
       <Top>
-        <ProgressBar step={4} />
+        <ProgressBar step={4} onBack={() => navigate(-1)}/>
       </Top>
 
       <Middle>

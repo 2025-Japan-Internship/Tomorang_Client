@@ -31,6 +31,10 @@ function LoginPage(){
         <BackButton onClick={handleBack}>
           <img src={BackArrow} alt="뒤로가기" />
         </BackButton>
+        <Logowrap>
+          <Logo src={logo} alt="로고"></Logo>
+          <Catchphrase>나의 첫 번째 로컬 친구, 토모랑</Catchphrase>
+        </Logowrap>
       </TopSection>
 
       {/* 하단 화이트 카드 영역 */}
@@ -208,3 +212,20 @@ const LoginButton = styled.button`
   cursor: pointer;
   &:active { opacity: 0.8; }
 `;
+const Logo = styled.img`
+  width:143px;
+  height:97px;
+  margin-top:335px;
+  margin-bottom:12px;
+`
+const Catchphrase = styled.p`
+    color:#4E4E4E;
+`
+const Logowrap = styled.div`
+  background-color:#C5F598;
+  width:390px;
+  height:844px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+`
