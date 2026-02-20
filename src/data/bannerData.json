@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "image": "https://example.com/images/banner_travel.jpg",
+    "name": "트래블라이트",
+    "description": "지금 예약하면 최대 40% 할인!",
+    "link": "https://example.com/travel"
+  },
+  {
+    "id": 2,
+    "image": "https://example.com/images/banner_food.jpg",
+    "name": "맛집패스",
+    "description": "전국 인기 맛집을 한 번에",
+    "link": "https://example.com/food"
+  },
+  {
+    "id": 3,
+    "image": "https://example.com/images/banner_camera.jpg",
+    "name": "픽셀카메라",
+    "description": "여행의 순간을 선명하게",
+    "link": "https://example.com/camera"
+  }
+]

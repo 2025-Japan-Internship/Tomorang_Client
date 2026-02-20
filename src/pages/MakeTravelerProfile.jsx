@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import ProgressBar from "../components/ProgressBar";
 import StartComent from "../components/StartComent";
@@ -23,7 +23,8 @@ const { state } = useLocation();
 
  */
 function MakeTravelerProfile({ interests = [] }) {
-const { state } = useLocation();
+  const navigate = useNavigate();
+  const { state } = useLocation();
   const [profileImage, setProfileImage] = useState(null);
   const [nickname, setNickname] = useState("");
   const [bio, setBio] = useState("");
@@ -49,6 +50,7 @@ const { state } = useLocation();
   const handleNext = () => {
     const payload = { profileImage, nickname, bio, interests: tags };
     console.log("백엔드 전송 payload:", payload);
+    navigate("/welcome");
     // TODO: API 호출
   };
 
@@ -122,7 +124,7 @@ const { state } = useLocation();
       </Content>
 
       <Bottom>
-        <NextButton isValid={isValid} onClick={handleNext} />
+        <NextButton isValid={true} onClick={handleNext} />
       </Bottom>
     </Wrapper>
   );

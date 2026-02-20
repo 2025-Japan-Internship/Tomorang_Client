@@ -1,5 +1,12 @@
-/*호출방법 <NextButton isValid={true} onClick={handleNext} /> */
 
+/*
+호출방법
+  const handleNext = () => {
+    navigate("/make-traveler-profile", { state: { interests: selected } });
+  };
+*/
+
+/* <NextButton isValid={true} onClick={handleNext} /> */
 import styled from "styled-components";
 
 function NextButton({ isValid, onClick }) {

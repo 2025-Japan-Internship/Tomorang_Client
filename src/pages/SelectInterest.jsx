@@ -60,7 +60,7 @@ const Top = styled.div`
 `;
 
 const Middle = styled.div`
-  padding: 2.9375rem 0 1.5rem;
+  padding: 1.8rem 0 1.5rem;
 `;
 
 const SubText = styled.div`

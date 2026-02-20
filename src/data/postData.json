@@ -1,0 +1,91 @@
+[
+  {
+    "postId": 1,
+    "userId": "traveler01",
+    "mainImage": "https://example.com/posts/1/main.jpg",
+    "subImages": [
+      "https://example.com/posts/1/sub1.jpg",
+      "https://example.com/posts/1/sub2.jpg",
+      "https://example.com/posts/1/sub3.jpg"
+    ],
+    "title": "제주 감성 여행 패키지",
+    "subtitle": "자연과 힐링을 동시에",
+    "price": 129000,
+    "description": "제주의 숨은 명소를 둘러보는 1박 2일 감성 여행 코스입니다.",
+    "rating": 4.8,
+    "guideLink": "https://example.com/guide/jeju",
+    "isSale": true,
+    "likeCount": 128
+  },
+  {
+    "postId": 2,
+    "userId": "foodlover22",
+    "mainImage": "https://example.com/posts/2/main.jpg",
+    "subImages": [
+      "https://example.com/posts/2/sub1.jpg",
+      "https://example.com/posts/2/sub2.jpg"
+    ],
+    "title": "부산 미식 투어",
+    "subtitle": "현지인이 추천하는 맛집",
+    "price": 89000,
+    "description": "부산에서 꼭 가봐야 할 로컬 맛집을 하루 동안 투어합니다.",
+    "rating": 4.6,
+    "guideLink": "https://example.com/guide/busan-food",
+    "isSale": false,
+    "likeCount": 76
+  },
+  {
+    "postId": 3,
+    "userId": "photo_master",
+    "mainImage": "https://example.com/posts/3/main.jpg",
+    "subImages": [
+      "https://example.com/posts/3/sub1.jpg",
+      "https://example.com/posts/3/sub2.jpg",
+      "https://example.com/posts/3/sub3.jpg",
+      "https://example.com/posts/3/sub4.jpg"
+    ],
+    "title": "서울 야경 촬영 코스",
+    "subtitle": "인생샷 보장 스팟",
+    "price": 59000,
+    "description": "서울의 대표적인 야경 명소에서 촬영하는 프리미엄 가이드 투어.",
+    "rating": 4.9,
+    "guideLink": "https://example.com/guide/seoul-night",
+    "isSale": true,
+    "likeCount": 214
+  },
+  {
+    "postId": 4,
+    "userId": "hiker88",
+    "mainImage": "https://example.com/posts/4/main.jpg",
+    "subImages": [
+      "https://example.com/posts/4/sub1.jpg",
+      "https://example.com/posts/4/sub2.jpg"
+    ],
+    "title": "설악산 트레킹",
+    "subtitle": "초보자도 가능한 코스",
+    "price": 99000,
+    "description": "전문 가이드와 함께하는 안전한 설악산 트레킹 프로그램.",
+    "rating": 4.5,
+    "guideLink": "https://example.com/guide/seorak",
+    "isSale": false,
+    "likeCount": 63
+  },
+  {
+    "postId": 5,
+    "userId": "city_explorer",
+    "mainImage": "https://example.com/posts/5/main.jpg",
+    "subImages": [
+      "https://example.com/posts/5/sub1.jpg",
+      "https://example.com/posts/5/sub2.jpg",
+      "https://example.com/posts/5/sub3.jpg"
+    ],
+    "title": "도쿄 도심 자유여행 가이드",
+    "subtitle": "핫플만 모았다",
+    "price": 149000,
+    "description": "도쿄의 최신 트렌드 핫플레이스를 중심으로 구성된 2박 3일 가이드.",
+    "rating": 4.7,
+    "guideLink": "https://example.com/guide/tokyo",
+    "isSale": true,
+    "likeCount": 189
+  }
+]
