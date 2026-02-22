@@ -9,6 +9,7 @@ import Temp from "../pages/Temp";
 import StartPage from "../pages/StartPage";
 import Login from "../pages/LoginPage";
 import RoleSelectPage from "../pages/RoleSelectPage";
+import MainPage from "../pages/MainPage";
 
 function Router() {
   return (
@@ -21,6 +22,7 @@ function Router() {
           <Route path="/interest" element={<SetInterest />} />
           <Route path="/make-traveler-profile" element={<MakeTravelerProfile />} />
           <Route path="/welcome" element={<WelcomePage />} />
+          <Route path="/main" element={<MainPage />} />
         </Routes>
     </BrowserRouter>
   );

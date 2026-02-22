@@ -1,0 +1,52 @@
+[
+  {
+    "reviewId": 1,
+    "postId": 2,
+    "userId": "user_suji",
+    "nickname": "Suji Lee",
+    "postImage": "/assets/postImages/cose2.svg",
+    "rating": 4.8,
+    "content": "개인적으로 빈티지 샵을 좋아하는데 진짜 골목 들어가셔서 가게를 찾으셔서 진짜 놀랐음\n찐강추 옷 좋아하시는 분들은 진짜 추천",
+    "createdAt": "2026-02-22T09:18:00Z"
+  },
+  {
+    "reviewId": 2,
+    "postId": 1,
+    "userId": "user_minjun",
+    "nickname": "Minjun Kim",
+    "postImage": "/assets/postImages/cose1.svg",
+    "rating": 5.0,
+    "content": "후지산 일출 보러 갔는데 날씨도 딱 맞고 가이드분이 포토스팟 진짜 잘 알고 계셔서 사진 너무 잘 나왔어요",
+    "createdAt": "2026-02-22T06:00:00Z"
+  },
+  {
+    "reviewId": 3,
+    "postId": 3,
+    "userId": "user_hana",
+    "nickname": "Hana Park",
+    "postImage": "/assets/postImages/cose1.svg",
+    "rating": 4.9,
+    "content": "다도 체험이 생각보다 훨씬 좋았어요. 기온 골목도 너무 예쁘고 사진도 많이 찍었어요. 강추합니다!",
+    "createdAt": "2026-02-21T23:30:00Z"
+  },
+  {
+    "reviewId": 4,
+    "postId": 4,
+    "userId": "user_junho",
+    "nickname": "Junho Choi",
+    "postImage": "/assets/postImages/cose2.svg",
+    "rating": 4.7,
+    "content": "오사카 맛집 투어 대박이었어요. 현지인 단골집 데려가줘서 완전 만족. 타코야키는 진짜 인생 맛이었음",
+    "createdAt": "2026-02-21T18:30:00Z"
+  },
+  {
+    "reviewId": 5,
+    "postId": 5,
+    "userId": "user_yuna",
+    "nickname": "Yuna Seo",
+    "postImage": "",
+    "rating": 5.0,
+    "content": "홋카이도 설원 트레킹 진짜 살면서 이런 경험 처음이었어요. 온천까지 세트로 너무 완벽했습니다",
+    "createdAt": "2026-02-21T09:30:00Z"
+  }
+]
