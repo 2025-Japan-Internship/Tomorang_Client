@@ -1,0 +1,77 @@
+[
+  {
+    "regionId": 1,
+    "image": "/assets/regionImages/mizuhoshi.svg",
+    "country": "Japan",
+    "translations": {
+      "ko": { "cityName": "미즈호시" },
+      "ja": { "cityName": "瑞穂市" },
+      "en": { "cityName": "Mizuhoshi" }
+    },
+    "tags": {
+      "ko": ["풍경", "사진"],
+      "ja": ["景色", "写真"],
+      "en": ["scenery", "photo"]
+    }
+  },
+  {
+    "regionId": 2,
+    "image": "/assets/regionImages/inazawa.svg",
+    "country": "Japan",
+    "translations": {
+      "ko": { "cityName": "이나자와시" },
+      "ja": { "cityName": "稲沢市" },
+      "en": { "cityName": "Inazawa" }
+    },
+    "tags": {
+      "ko": ["맛집"],
+      "ja": ["グルメ"],
+      "en": ["food"]
+    }
+  },
+  {
+    "regionId": 3,
+    "image": "/assets/regionImages/region1.svg",
+    "country": "Japan",
+    "translations": {
+      "ko": { "cityName": "교토" },
+      "ja": { "cityName": "京都市" },
+      "en": { "cityName": "Kyoto" }
+    },
+    "tags": {
+      "ko": ["힐링", "전통"],
+      "ja": ["癒し", "伝統"],
+      "en": ["healing", "traditional"]
+    }
+  },
+  {
+    "regionId": 4,
+    "image": "/assets/regionImages/inazawa.svg",
+    "country": "Japan",
+    "translations": {
+      "ko": { "cityName": "오사카" },
+      "ja": { "cityName": "大阪市" },
+      "en": { "cityName": "Osaka" }
+    },
+    "tags": {
+      "ko": ["맛집", "쇼핑"],
+      "ja": ["グルメ", "ショッピング"],
+      "en": ["food", "shopping"]
+    }
+  },
+  {
+    "regionId": 5,
+    "image": "/assets/regionImages/inazawa.svg",
+    "country": "Japan",
+    "translations": {
+      "ko": { "cityName": "홋카이도" },
+      "ja": { "cityName": "北海道" },
+      "en": { "cityName": "Hokkaido" }
+    },
+    "tags": {
+      "ko": ["자연", "액티비티"],
+      "ja": ["自然", "アクティビティ"],
+      "en": ["nature", "activity"]
+    }
+  }
+]

@@ -1,0 +1,109 @@
+[
+  {
+    "id": 1,
+    "username": "guide_yuki",
+    "nickname": "Sato",
+    "bio": "후지산 현지 가이드 5년차입니다.",
+    "description": "후지산 주변의 숨은 명소를 잘 알고 있어요.\n사진 찍기 좋은 스팟 위주로 안내해드립니다.\n궁금하신 분들은 예약 눌러 문의 주세요.",
+    "profileImage": "/assets/guideImages/guide1.svg",
+    "nationality": "일본",
+    "activeCity": "후지산",
+    "interests": ["풍경", "사진", "힐링"],
+    "languages": [
+      { "code": "KR", "level": "intermediate" },
+      { "code": "JP", "level": "advanced" }
+    ],
+    "rating": 4.8,
+    "reviewCount": 34,
+    "likeCount": 128,
+    "postIds": [1],
+    "isVerified": true,
+    "joinedAt": "2025-03-15"
+  },
+  {
+    "id": 2,
+    "username": "guide_hana",
+    "nickname": "kohaku",
+    "bio": "도쿄 서브컬처 전문 가이드입니다.",
+    "description": "아키하바라 고전 굿즈 좋아하시는 분들 정말 추천합니다.\n만나면 네고도 가능하니 궁금하신 분들은 예약 눌러 문의 주세요.",
+    "profileImage": "/assets/guideImages/guide2.svg",
+    "nationality": "일본",
+    "activeCity": "도쿄",
+    "interests": ["애니메이션", "쇼핑", "체험"],
+    "languages": [
+      { "code": "KR", "level": "advanced" },
+      { "code": "JP", "level": "advanced" },
+      { "code": "EN", "level": "beginner" }
+    ],
+    "rating": 4.6,
+    "reviewCount": 58,
+    "likeCount": 204,
+    "postIds": [2],
+    "isVerified": true,
+    "joinedAt": "2025-06-20"
+  },
+  {
+    "id": 3,
+    "username": "guide_sora",
+    "nickname": "jay",
+    "bio": "교토 토박이 가이드, 다도 자격증 보유.",
+    "description": "교토에서 나고 자란 소라입니다.\n전통 문화와 다도를 깊이 있게 경험하실 수 있어요.\n소규모 인원으로 진행해서 더 특별한 시간이 될 거예요.",
+    "profileImage": "/assets/guideImages/guide3.svg",
+    "nationality": "일본",
+    "activeCity": "교토",
+    "interests": ["힐링", "전통", "풍경"],
+    "languages": [
+      { "code": "KR", "level": "advanced" },
+      { "code": "JP", "level": "advanced" },
+      { "code": "EN", "level": "intermediate" }
+    ],
+    "rating": 4.9,
+    "reviewCount": 91,
+    "likeCount": 317,
+    "postIds": [3],
+    "isVerified": true,
+    "joinedAt": "2025-01-08"
+  },
+  {
+    "id": 4,
+    "username": "guide_taro",
+    "nickname": "tablo",
+    "bio": "오사카 맛집 블로거 출신 가이드.",
+    "description": "오사카 현지인만 아는 맛집을 소개해드려요.\n블로그 10년 경력으로 검증된 맛집만 데려갑니다.\n식사 후 자유 시간도 드리니 편하게 즐기세요.",
+    "profileImage": "/assets/guideImages/guide4.jpg",
+    "nationality": "일본",
+    "activeCity": "오사카",
+    "interests": ["맛집", "탐방"],
+    "languages": [
+      { "code": "KR", "level": "intermediate" },
+      { "code": "JP", "level": "advanced" }
+    ],
+    "rating": 4.7,
+    "reviewCount": 72,
+    "likeCount": 253,
+    "postIds": [4],
+    "isVerified": true,
+    "joinedAt": "2025-09-01"
+  },
+  {
+    "id": 5,
+    "username": "guide_kenta",
+    "nickname": "켄타",
+    "bio": "홋카이도 아웃도어 전문 가이드 8년차.",
+    "description": "홋카이도의 광활한 자연을 안전하게 안내해드립니다.\n아웃도어 안전 자격증을 보유하고 있어요.\n체력에 맞게 코스를 조절해드리니 걱정 마세요.",
+    "profileImage": "/assets/guideImages/guide4.jpg",
+    "nationality": "일본",
+    "activeCity": "삿포로",
+    "interests": ["액티비티", "자연", "풍경"],
+    "languages": [
+      { "code": "KR", "level": "beginner" },
+      { "code": "JP", "level": "advanced" }
+    ],
+    "rating": 5.0,
+    "reviewCount": 18,
+    "likeCount": 89,
+    "postIds": [5],
+    "isVerified": false,
+    "joinedAt": "2026-01-12"
+  }
+]
