@@ -25,7 +25,7 @@ export default function SelectInterest() {
   return (
     <Wrapper>
       <Top>
-        <ProgressBar step={3} />
+        <ProgressBar step={3} onBack={() => navigate(-1)}/>
       </Top>
 
       <Middle>

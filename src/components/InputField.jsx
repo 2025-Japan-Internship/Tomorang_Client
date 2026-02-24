@@ -1,21 +1,25 @@
-{/* <InputField label="비밀번호"type="password"placeholder="비밀번호를 입력하세요"/> */}
 import React from "react";
 import styled from "styled-components";
 
-function InputField({ label, type = "text", placeholder }) {
+function InputField({ label, type = "text", placeholder, value, onChange }) {
   return (
     <Wrapper>
       <StyledLabel>{label}</StyledLabel>
-      <StyledInput type={type} placeholder={placeholder} />
+      <StyledInput
+        type={type}
+        placeholder={placeholder}
+        value={value}
+        onChange={onChange}
+      />
     </Wrapper>
   );
 }
 
 export default InputField;
 
-/* 스타일 */
-
 const Wrapper = styled.div`
+  margin-bottom:16px;
+  margin-left:21px;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -44,6 +48,6 @@ const StyledInput = styled.input`
   }
 
   &:focus {
-    outline: 1px solid #94B872;
+    outline: 1px solid #C5F598;
   }
 `;
