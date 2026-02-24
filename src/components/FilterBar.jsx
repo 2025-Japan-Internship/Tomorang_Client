@@ -162,6 +162,8 @@ const TagChip = styled.button`
   background: ${({ selected }) => (selected ? "#C5F598" : "#ffffff")};
   font-size: 14px;
   font-weight: 500;
+  font-family: Pretendard;
+  line-height: 22px;
   cursor: pointer;
 
   order: ${({ selected }) => (selected ? "-1" : "0")};
