@@ -16,6 +16,11 @@
     "rating": 4.8,
     "reviewCount": 34,
     "likeCount": 128,
+    "tag": {
+      "ko": ["탐방"],
+      "ja": ["探訪"],
+      "en": ["visit"]
+    },
     "city": {
       "name": "후지산",
       "country": "Japan",
@@ -51,7 +56,7 @@
   },
   {
     "postId": 2,
-    "userId": "guide_hana",
+    "userId": "guide_yuki",
     "images": [
       "/assets/postImages/cose2.svg",
       "/assets/postImages/akiba_2.jpg"
@@ -65,6 +70,11 @@
     "rating": 4.6,
     "reviewCount": 58,
     "likeCount": 204,
+    "tag": {
+      "ko": ["탐방","맛집"],
+      "ja": ["探訪"],
+      "en": ["visit"]
+    },
     "city": {
       "name": "도쿄",
       "country": "Japan",
@@ -90,7 +100,7 @@
   },
   {
     "postId": 3,
-    "userId": "guide_sora",
+    "userId": "guide_yuki",
     "images": [
       "/assets/postImages/cose1.svg",
       "/assets/postImages/kyoto_2.jpg",
