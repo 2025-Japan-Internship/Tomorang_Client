@@ -1,0 +1,150 @@
+import { useState } from "react";
+import styled from "styled-components";
+import HeartIcon from "../../assets/heart.svg";
+
+export default function PostCard({ post, isSale = false }) {
+  const [liked, setLiked] = useState(false);
+
+  const rawPrice = parseInt(post.price.replace(/,/g, ""), 10);
+  const discountedPrice = isSale && post.discountRate
+    ? Math.round(rawPrice * (1 - post.discountRate / 100))
+    : rawPrice;
+
+  return (
+    <Card>
+      <ImageWrap>
+        <Img
+          src={post.images?.[0]}
+          alt={post.title}
+          onError={e => { e.target.style.background = "#ddd"; e.target.removeAttribute("src"); }}
+        />
+        {isSale && <SaleBadge>SALE</SaleBadge>}
+        <HeartBtn onClick={(e) => { e.stopPropagation(); setLiked(p => !p); }}>
+          <img src={HeartIcon} alt="heart" style={{ width: 12, height: 11 }} />
+        </HeartBtn>
+      </ImageWrap>
+
+      <Info>
+        <Title>{post.title} ›</Title>
+        <Subtitle>{post.subtitle}</Subtitle>
+        <PriceArea>
+          {isSale && post.discountRate > 0 && (
+            <OriginalPrice>{rawPrice.toLocaleString()}원</OriginalPrice>
+          )}
+          <Price>{discountedPrice.toLocaleString()}원</Price>
+        </PriceArea>
+      </Info>
+    </Card>
+  );
+}
+
+const Card = styled.div`
+  width: 200px;
+  flex-shrink: 0;
+  cursor: pointer;
+  border-radius: 12px;
+  border: 0.3px solid #f3f4f3;
+  background: #fff;
+`;
+
+const ImageWrap = styled.div`
+  position: relative;
+  width: 100%;
+  height: 120px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #eee;
+`;
+
+const Img = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+`;
+
+const SaleBadge = styled.div`
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  height: 26px;
+  border-radius: 70px;
+  padding: 6px 10px;
+  box-sizing: border-box;
+  background: #C5F598;
+  font-family: "Pretendard", sans-serif;
+  font-weight: 700;
+  font-size: 11px;
+  line-height: 100%;
+  color: #111;
+  display: flex;
+  align-items: center;
+`;
+
+const HeartBtn = styled.button`
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 28px;
+  height: 28px;
+  background: rgba(255, 255, 255, 0.88);
+  border: none;
+  border-radius: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  padding: 0;
+`;
+
+const Info = styled.div`
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+`;
+
+const Title = styled.div`
+  font-size: 14px;
+  font-weight: 500;
+  color: #111;
+  letter-spacing: -0.1%;
+  line-height: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+`;
+
+const Subtitle = styled.div`
+  font-size: 10px;
+  font-weight: 400;
+  color: #acacac;
+  letter-spacing: -0.1%;
+  line-height: 100%;
+`;
+
+const PriceArea = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-bottom: 16px;
+`;
+
+const OriginalPrice = styled.div`
+  font-family: "Pretendard", sans-serif;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 100%;
+  letter-spacing: -0.1%;
+  text-decoration: line-through;
+  color: #DADADA;
+`;
+
+const Price = styled.div`
+  font-size: 14px;
+  font-weight: 700;
+  color: #111;
+  letter-spacing: -0.1%;
+  line-height: 100%;
+`;

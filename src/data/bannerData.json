@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "image": "/assets/bannerImages/banner2.svg",
+    "category": "맛집",
+    "title": "도쿄",
+    "description": "전국 인기 맛집을\n한 번에",
+    "link": "https://example.com/food"
+  },
+  {
+    "id": 2,
+    "image": "/assets/bannerImages/banner1.svg",
+    "category": "음식",
+    "title": "구마모토",
+    "description": "특색있는 음식\n좋아하세요?",
+    "link": "https://example.com/travel"
+  },
+  {
+    "id": 3,
+    "image": "/assets/bannerImages/banner3.svg",
+    "category": "사진",
+    "title": "오사카",
+    "description": "여행의 순간을\n선명하게",
+    "link": "https://example.com/camera"
+  }
+]

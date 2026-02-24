@@ -42,7 +42,7 @@ function InterestSelect({ selected = [], onToggle }) {
             {image && !isSelected && (
               <>
                 <ImgLayer src={image} alt={label} />
-                {/* <Overlay /> */}
+                 <Overlay />
               </>
             )}
             <Label $light={!!image && !isSelected}>{label}</Label>
@@ -78,9 +78,14 @@ const Card = styled.div`
 
   transition: background-color 0.2s ease;
 
-  &:active {
+  /* 선택 시 드롭쉐도우 블러 15 스프레드 0 */
+  box-shadow: ${({ $selected }) =>
+    $selected ? "0px 0px 15px 0px rgba(197, 245, 152, 0.3)" : "none"};
+    
+  /* &:active {
     transform: rotate(-45deg) scale(0.95);
   }
+    */
 `;
 
 const ImgLayer = styled.img`
@@ -93,13 +98,13 @@ const ImgLayer = styled.img`
   transform-origin: center center;
 `;
 
-/* 이미지 위 반투명 어두운 오버레이 
+/* 이미지 위 반투명 어두운 오버레이 */
 const Overlay = styled.div`
   position: absolute;
   inset: 0;
   background: rgba(0, 0, 0, 0.3);
 `;
-*/
+
 const Label = styled.span`
   position: relative;
   z-index: 1;

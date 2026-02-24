@@ -1,0 +1,226 @@
+[
+  {
+    "postId": 1,
+    "userId": "guide_yuki",
+    "images": [
+      "/assets/postImages/cose1.svg",
+      "/assets/postImages/fuji_2.jpg",
+      "/assets/postImages/fuji_3.jpg"
+    ],
+    "title": "후지산 주위 투어",
+    "subtitle": "관광객이 붐비지 않는 포토스팟",
+    "price": "32,000",
+    "discountRate": 0,
+    "duration": "4시간",
+    "maxParticipants": 6,
+    "rating": 4.8,
+    "reviewCount": 34,
+    "likeCount": 128,
+    "city": {
+      "name": "후지산",
+      "country": "Japan",
+      "lat": 35.3606,
+      "lng": 138.7274
+    },
+    "availableSchedules": [
+      {
+        "date": "2026-04-03",
+        "timeSlots": [
+          { "id": "slot_20260403_0900", "time": "09:00", "status": "OPEN" },
+          { "id": "slot_20260403_1400", "time": "14:00", "status": "CLOSED" },
+          { "id": "slot_20260403_1800", "time": "18:00", "status": "OPEN" }
+        ]
+      },
+      {
+        "date": "2026-04-05",
+        "timeSlots": [
+          { "id": "slot_20260405_1000", "time": "10:00", "status": "OPEN" },
+          { "id": "slot_20260405_1500", "time": "15:00", "status": "CLOSED" }
+        ]
+      }
+    ],
+    "contentBlocks": [
+      { "type": "text", "value": "후지산 주변을 천천히 둘러볼 예정입니다." },
+      { "type": "image", "value": "/assets/postContents/fuji1.jpg" },
+      { "type": "text", "value": "이곳에서 일출을 감상합니다." },
+      { "type": "image", "value": "/assets/postContents/fuji2.jpg" },
+      { "type": "text", "value": "이후 마을을 돌아다닐 예정입니다." }
+    ],
+    "createdAt": "2026-02-21T10:23:00Z",
+    "updatedAt": "2026-02-21T12:10:00Z"
+  },
+  {
+    "postId": 2,
+    "userId": "guide_hana",
+    "images": [
+      "/assets/postImages/cose2.svg",
+      "/assets/postImages/akiba_2.jpg"
+    ],
+    "title": "아키하바라 서브컬처 탐방",
+    "subtitle": "애니메이션 성지를 현지 가이드와 함께",
+    "price": "25,000",
+    "discountRate": 10,
+    "duration": "3시간",
+    "maxParticipants": 4,
+    "rating": 4.6,
+    "reviewCount": 58,
+    "likeCount": 204,
+    "city": {
+      "name": "도쿄",
+      "country": "Japan",
+      "lat": 35.6984,
+      "lng": 139.7731
+    },
+    "availableSchedules": [
+      {
+        "date": "2026-04-10",
+        "timeSlots": [
+          { "id": "slot_20260410_1100", "time": "11:00", "status": "OPEN" },
+          { "id": "slot_20260410_1600", "time": "16:00", "status": "CLOSED" }
+        ]
+      }
+    ],
+    "contentBlocks": [
+      { "type": "text", "value": "아키하바라의 주요 피규어샵을 함께 둘러봅니다." },
+      { "type": "image", "value": "/assets/postContents/akiba1.jpg" },
+      { "type": "text", "value": "레트로 게임센터에서 자유 시간이 주어집니다." }
+    ],
+    "createdAt": "2026-02-18T09:00:00Z",
+    "updatedAt": "2026-02-19T11:00:00Z"
+  },
+  {
+    "postId": 3,
+    "userId": "guide_sora",
+    "images": [
+      "/assets/postImages/cose1.svg",
+      "/assets/postImages/kyoto_2.jpg",
+      "/assets/postImages/kyoto_3.jpg"
+    ],
+    "title": "교토 전통 거리 힐링 산책",
+    "subtitle": "기온 골목과 다도 체험",
+    "price": "40,000",
+    "discountRate": 0,
+    "duration": "5시간",
+    "maxParticipants": 6,
+    "rating": 4.9,
+    "reviewCount": 91,
+    "likeCount": 317,
+    "city": {
+      "name": "교토",
+      "country": "Japan",
+      "lat": 35.0116,
+      "lng": 135.7681
+    },
+    "availableSchedules": [
+      {
+        "date": "2026-04-07",
+        "timeSlots": [
+          { "id": "slot_20260407_0900", "time": "09:00", "status": "OPEN" },
+          { "id": "slot_20260407_1400", "time": "14:00", "status": "CLOSED" }
+        ]
+      },
+      {
+        "date": "2026-04-12",
+        "timeSlots": [
+          { "id": "slot_20260412_1000", "time": "10:00", "status": "OPEN" }
+        ]
+      }
+    ],
+    "contentBlocks": [
+      { "type": "text", "value": "기온 골목의 전통 가옥을 배경으로 사진을 찍습니다." },
+      { "type": "image", "value": "/assets/postContents/kyoto1.jpg" },
+      { "type": "text", "value": "다도 체험은 약 1시간 진행됩니다." },
+      { "type": "image", "value": "/assets/postContents/kyoto2.jpg" }
+    ],
+    "createdAt": "2026-02-10T08:30:00Z",
+    "updatedAt": "2026-02-20T10:00:00Z"
+  },
+  {
+    "postId": 4,
+    "userId": "guide_taro",
+    "images": [
+      "/assets/postImages/cose2.svg",
+      "/assets/postImages/osaka_2.jpg"
+    ],
+    "title": "오사카 맛집 투어",
+    "subtitle": "현지인만 아는 타코야키·라멘 골목",
+    "price": "28,000",
+    "discountRate": 15,
+    "duration": "3시간",
+    "maxParticipants": 5,
+    "rating": 4.7,
+    "reviewCount": 72,
+    "likeCount": 253,
+    "city": {
+      "name": "오사카",
+      "country": "Japan",
+      "lat": 34.6937,
+      "lng": 135.5023
+    },
+    "availableSchedules": [
+      {
+        "date": "2026-04-08",
+        "timeSlots": [
+          { "id": "slot_20260408_1200", "time": "12:00", "status": "OPEN" },
+          { "id": "slot_20260408_1800", "time": "18:00", "status": "CLOSED" }
+        ]
+      }
+    ],
+    "contentBlocks": [
+      { "type": "text", "value": "타코야키 원조 가게부터 시작합니다." },
+      { "type": "image", "value": "/assets/postContents/osaka1.jpg" },
+      { "type": "text", "value": "현지인 단골 라멘 골목으로 이동합니다." },
+      { "type": "image", "value": "/assets/postContents/osaka2.jpg" }
+    ],
+    "createdAt": "2026-02-15T14:00:00Z",
+    "updatedAt": "2026-02-21T09:00:00Z"
+  },
+  {
+    "postId": 5,
+    "userId": "guide_kenta",
+    "images": [
+      "/assets/postImages/hokkaido_1.jpg",
+      "/assets/postImages/hokkaido_2.jpg",
+      "/assets/postImages/hokkaido_3.jpg"
+    ],
+    "title": "홋카이도 자연 액티비티",
+    "subtitle": "설원 스노우트레킹 & 온천",
+    "price": "65,000",
+    "discountRate": 0,
+    "duration": "1박 2일",
+    "maxParticipants": 4,
+    "rating": 5.0,
+    "reviewCount": 18,
+    "likeCount": 89,
+    "city": {
+      "name": "삿포로",
+      "country": "Japan",
+      "lat": 43.0618,
+      "lng": 141.3545
+    },
+    "availableSchedules": [
+      {
+        "date": "2026-04-15",
+        "timeSlots": [
+          { "id": "slot_20260415_0800", "time": "08:00", "status": "OPEN" }
+        ]
+      },
+      {
+        "date": "2026-04-20",
+        "timeSlots": [
+          { "id": "slot_20260420_0800", "time": "08:00", "status": "OPEN" },
+          { "id": "slot_20260420_1300", "time": "13:00", "status": "CLOSED" }
+        ]
+      }
+    ],
+    "contentBlocks": [
+      { "type": "text", "value": "첫날 오전 설원 스노우트레킹을 진행합니다." },
+      { "type": "image", "value": "/assets/postContents/hokkaido1.jpg" },
+      { "type": "text", "value": "오후에는 천연 온천에서 휴식합니다." },
+      { "type": "image", "value": "/assets/postContents/hokkaido2.jpg" },
+      { "type": "text", "value": "이튿날 아침 홋카이도 로컬 아침 식사 후 해산합니다." }
+    ],
+    "createdAt": "2026-02-20T07:00:00Z",
+    "updatedAt": "2026-02-21T08:00:00Z"
+  }
+]

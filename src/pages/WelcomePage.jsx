@@ -55,7 +55,7 @@ const CenterBox = styled.div`
 `;
 
 const Logo = styled.img`
-  width: 3.5rem;
+  width: 4.8843rem;
   height: auto;
   margin-bottom: 4px;
 `;
