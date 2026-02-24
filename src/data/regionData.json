@@ -2,6 +2,7 @@
   {
     "regionId": 1,
     "image": "/assets/regionImages/mizuhoshi.svg",
+    "risingimg":"/assets/risingtravel/mizuho.svg",
     "country": "Japan",
     "translations": {
       "ko": { "cityName": "미즈호시" },
@@ -17,6 +18,7 @@
   {
     "regionId": 2,
     "image": "/assets/regionImages/inazawa.svg",
+    "risingimg":"/assets/risingtravel/inajawa.svg",
     "country": "Japan",
     "translations": {
       "ko": { "cityName": "이나자와시" },
@@ -32,6 +34,7 @@
   {
     "regionId": 3,
     "image": "/assets/regionImages/region1.svg",
+    "risingimg":"/assets/risingtravel/kyoto.svg",
     "country": "Japan",
     "translations": {
       "ko": { "cityName": "교토" },
@@ -47,6 +50,7 @@
   {
     "regionId": 4,
     "image": "/assets/regionImages/inazawa.svg",
+    "risingimg":"/assets/risingtravel/osaka.svg",
     "country": "Japan",
     "translations": {
       "ko": { "cityName": "오사카" },
@@ -62,6 +66,7 @@
   {
     "regionId": 5,
     "image": "/assets/regionImages/inazawa.svg",
+    "risingimg":"/assets/risingtravel/hokkaido.svg",
     "country": "Japan",
     "translations": {
       "ko": { "cityName": "홋카이도" },
