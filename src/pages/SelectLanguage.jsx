@@ -41,7 +41,7 @@ function SelectLanguage() {
   return (
     <Wrapper>
       <Top>
-        <ProgressBar step={2} />
+        <ProgressBar step={2} onBack={() => navigate(-1)} />
       </Top>
 
       <Middle>

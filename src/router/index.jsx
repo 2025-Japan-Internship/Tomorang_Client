@@ -9,6 +9,7 @@ import Temp from "../pages/Temp";
 import StartPage from "../pages/StartPage";
 import Login from "../pages/LoginPage";
 import RoleSelectPage from "../pages/RoleSelectPage";
+import TravelerSignupPage from "../pages/TravelerSignupPage";
 import MainPage from "../pages/MainPage";
 import EmergingDestination from "../pages/EmergingDestination";
 import DestinationListPage from "../pages/DestinationListPage";
@@ -29,6 +30,7 @@ function Router() {
           <Route path="/interest" element={<SetInterest />} />
           <Route path="/make-traveler-profile" element={<MakeTravelerProfile />} />
           <Route path="/welcome" element={<WelcomePage />} />
+          <Route path="/travelersignup" element={<TravelerSignupPage />} />
           <Route path="/main" element={<MainPage />} />
           <Route path="emergingDestination" element={<EmergingDestination></EmergingDestination>}/>
           <Route path="/destination" element={<DestinationListPage />} /> 
