@@ -13,12 +13,16 @@ import MainPage from "../pages/MainPage";
 import EmergingDestination from "../pages/EmergingDestination";
 import DestinationListPage from "../pages/DestinationListPage";
 import CourseDescriptionPage from "../pages/CourseDescriptionPage";
+import SearchPage from "../pages/SeachPage";
+import MapPage from "../pages/MapPage";
 
 function Router() {
   return (
     <BrowserRouter>
       <Routes>
           <Route path="/" element={<StartPage />} />
+          <Route path="/map" element={<MapPage />} />
+          <Route path="/search" element={<SearchPage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/role" element={<RoleSelectPage />} />
           <Route path="/language" element={<SetLanguage />} />

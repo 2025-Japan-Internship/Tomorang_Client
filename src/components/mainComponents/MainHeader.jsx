@@ -23,7 +23,7 @@ const Wrapper = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 17px 20px 0 20px;
+  padding: 17px 20px 10px 20px;
   background-color: #fff;
   position: sticky;
   top: 0;
@@ -32,7 +32,7 @@ const Wrapper = styled.header`
 
 const Icons = styled.div`
   display: flex;
-  gap: 10px;
+  gap: 4px;
   align-items: center;
 `;
 
