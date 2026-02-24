@@ -4,7 +4,7 @@ import StartComent from '../components/StartComent';
 import BackArrow from "../assets/backarrow.svg";
 import StartPage from './StartPage';
 import { useNavigate } from "react-router-dom";
-import logo from '../assets/logo.svg';
+import logo from '../assets/logo.svg';-
 
 function LoginPage(){
   const [saveInfo, setSaveInfo] = useState(false);
@@ -16,7 +16,7 @@ function LoginPage(){
   
     setTimeout(() => {
       navigate(-1);
-    }, 400);
+    }, 400); // slideDown 시간과 맞추기
   };
   useEffect(() => {
     setTimeout(() => {

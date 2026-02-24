@@ -1,23 +1,26 @@
 [
   {
     "id": 1,
-    "image": "https://example.com/images/banner_travel.jpg",
-    "name": "트래블라이트",
-    "description": "지금 예약하면 최대 40% 할인!",
-    "link": "https://example.com/travel"
-  },
-  {
-    "id": 2,
-    "image": "https://example.com/images/banner_food.jpg",
-    "name": "맛집패스",
-    "description": "전국 인기 맛집을 한 번에",
+    "image": "/assets/bannerImages/banner2.svg",
+    "category": "맛집",
+    "title": "도쿄",
+    "description": "전국 인기 맛집을\n한 번에",
     "link": "https://example.com/food"
   },
   {
+    "id": 2,
+    "image": "/assets/bannerImages/banner1.svg",
+    "category": "음식",
+    "title": "구마모토",
+    "description": "특색있는 음식\n좋아하세요?",
+    "link": "https://example.com/travel"
+  },
+  {
     "id": 3,
-    "image": "https://example.com/images/banner_camera.jpg",
-    "name": "픽셀카메라",
-    "description": "여행의 순간을 선명하게",
+    "image": "/assets/bannerImages/banner3.svg",
+    "category": "사진",
+    "title": "오사카",
+    "description": "여행의 순간을\n선명하게",
     "link": "https://example.com/camera"
   }
 ]
