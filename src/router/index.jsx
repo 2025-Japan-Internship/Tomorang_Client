@@ -11,10 +11,11 @@ import Login from "../pages/LoginPage";
 import RoleSelectPage from "../pages/RoleSelectPage";
 import MainPage from "../pages/MainPage";
 import EmergingDestination from "../pages/EmergingDestination";
-import DestinationListPage from "../pages/DestinationListPage";
-import CourseDescriptionPage from "../pages/CourseDescriptionPage";
+//import DestinationListPage from "../pages/DestinationListPage";
+//import CourseDescriptionPage from "../pages/CourseDescriptionPage";
 import SearchPage from "../pages/SeachPage";
 import MapPage from "../pages/MapPage";
+import ReservationPage from "../pages/ReservationPage";
 
 function Router() {
   return (
@@ -31,8 +32,9 @@ function Router() {
           <Route path="/welcome" element={<WelcomePage />} />
           <Route path="/main" element={<MainPage />} />
           <Route path="emergingDestination" element={<EmergingDestination></EmergingDestination>}/>
-          <Route path="/destination" element={<DestinationListPage />} /> 
-          <Route path="/course" element={<CourseDescriptionPage />} />
+          <Route path="/reservation/:postId" element={<ReservationPage />} />
+          {/* <Route path="/destination" element={<DestinationListPage />} />   */}
+          {/* <Route path="/course" element={<CourseDescriptionPage />} /> */}
         </Routes>
     </BrowserRouter>
   );

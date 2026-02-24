@@ -18,6 +18,7 @@ import reviews from "../data/reviews.json";
 
 import MainHeader from "../components/mainComponents/MainHeader";
 
+
 const SCROLL_ROW = {
   display: "flex",
   gap: 12,
@@ -29,7 +30,7 @@ const SCROLL_ROW = {
 
 export default function MainPage() {
   const lang = "ko";
-  const [activeNav, setActiveNav] = useState("home");
+  const [activeNav, setActiveNav] = useState(0);
 
   const trendingPosts = postData;
   const salePosts = postData.filter((p) => p.discountRate > 0);
@@ -106,7 +107,7 @@ export default function MainPage() {
         </Section>
       </ReviewWrapper>
       {/* ── Bottom Navigation ── */}
-      <BottomNav activeNav={activeNav} onNavChange={setActiveNav} />
+      <BottomNav activeIndex={activeNav} onNavChange={setActiveNav} />
     </div>
   );
 }
