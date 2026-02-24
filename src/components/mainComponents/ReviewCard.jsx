@@ -74,6 +74,7 @@ const ContentCard = styled.div`
   flex-direction: column;
   gap: 10px;
   overflow: hidden;
+  background-color:#fff;
 `;
 
 const TopRow = styled.div`
@@ -142,4 +143,5 @@ const ReviewText = styled.div`
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   text-overflow: ellipsis;
+  
 `;

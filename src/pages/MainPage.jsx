@@ -92,18 +92,19 @@ export default function MainPage() {
         </div>
       </Section>
 
-      {/* ── 실시간 리뷰 ── */}
-      <Section title="실시간 리뷰">
-        <div style={SCROLL_ROW}>
-          {reviews
-            .filter((r) => r.postImage)  // ← 이것만 추가
-            .slice(0, 5)
-            .map((review) => (
-              <ReviewCard key={review.reviewId} review={review} />
-            ))}
-        </div>
-      </Section>
-
+      <ReviewWrapper>
+        {/* ── 실시간 리뷰 ── */}
+        <Section title="실시간 리뷰">
+          <div style={SCROLL_ROW}>
+            {reviews
+              .filter((r) => r.postImage)  // ← 이것만 추가
+              .slice(0, 5)
+              .map((review) => (
+                <ReviewCard key={review.reviewId} review={review} />
+              ))}
+          </div>
+        </Section>
+      </ReviewWrapper>
       {/* ── Bottom Navigation ── */}
       <BottomNav activeNav={activeNav} onNavChange={setActiveNav} />
     </div>
@@ -114,4 +115,8 @@ const TopSection = styled.div`
   flex-direction: column;
   gap: 20px; /* 여기서 간격 조절 */
   margin-bottom: 24px; /* 필터 아래랑 다음 섹션 간격 */
+  z-index:300;
+`;
+const ReviewWrapper = styled.div`
+  background-color: #F3F4F3;
 `;

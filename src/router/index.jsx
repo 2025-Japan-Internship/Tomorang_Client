@@ -10,12 +10,16 @@ import StartPage from "../pages/StartPage";
 import Login from "../pages/LoginPage";
 import RoleSelectPage from "../pages/RoleSelectPage";
 import MainPage from "../pages/MainPage";
+import SearchPage from "../pages/SeachPage";
+import MapPage from "../pages/MapPage";
 
 function Router() {
   return (
     <BrowserRouter>
       <Routes>
           <Route path="/" element={<StartPage />} />
+          <Route path="/map" element={<MapPage />} />
+          <Route path="/search" element={<SearchPage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/role" element={<RoleSelectPage />} />
           <Route path="/language" element={<SetLanguage />} />
