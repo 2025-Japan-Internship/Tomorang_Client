@@ -7,7 +7,7 @@ function WelcomePage() {
   const navigate = useNavigate();
   useEffect(() => {
     const timer = setTimeout(() => {
-      navigate("/temp"); // 다음 페이지 미구현
+      navigate("/main"); // 다음 페이지 미구현
     }, 3000);
 
     return () => clearTimeout(timer); // 언마운트 시 클린업
