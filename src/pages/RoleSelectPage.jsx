@@ -17,14 +17,26 @@ function RoleSelectPage() {
   const handleBack = () => {
     navigate(-1);
   };
+  const handleNext = () => {
+    if (selectedRole === 'traveler') {
+      navigate("/travelersignup");
+    } else if (selectedRole === 'guide') {
+      navigate("/guidesignup");
+    }
+  };
 
   return (
     <PageContainer>
       {/* 상단 뒤로가기 버튼 */}
+      <ButtonWrap>
         <BackButton src={BackArrow} alt="뒤로가기" onClick={handleBack} />
+        <Space></Space>
+      </ButtonWrap>
 
       {/* 메인 텍스트 영역 */}
-      <StartComent coment={'처음 만났네요,<br/>반가워요'} />
+      <Middle>
+        <StartComent coment={'처음 만났네요,<br/>반가워요'} />
+      </Middle>
       <SubTitle>오늘부터 어떤 여행을 시작할까요?</SubTitle>
 
       {/* 카드 선택 영역 */}
@@ -54,7 +66,8 @@ function RoleSelectPage() {
 
       {/* 하단 다음 버튼 */}
       <Footer>
-        <NextButton isValid={selectedRole !== null} />
+      <NextButton 
+        isValid={!!selectedRole} onClick={handleNext} />
       </Footer>
     </PageContainer>
   );
@@ -71,18 +84,29 @@ const PageContainer = styled.div`
   height: 100vh;
   background-color: #fff;
   box-sizing: border-box;
+  padding-top: 24px;
 `;
 
-
+const ButtonWrap = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+  width: 390px;
+  height: 56px;
+`
 const BackButton = styled.img`
   width: 24px;
   height: 24px;
   cursor: pointer;
-  margin-top:64px;
-  margin-left:16px;
-  margin-bottom:49px;
 `;
-
+const Space = styled.div`
+  width: 24px;
+  height: 24px;
+`
+const Middle = styled.div`
+  padding-top: 49px;
+`
 const SubTitle = styled.p`
     color: #ACACAC;
     font-family: Pretendard;
