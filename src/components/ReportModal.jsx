@@ -3,6 +3,7 @@ import styled, { keyframes } from 'styled-components';
 import CloseIcon from '../assets/CloseIcon.svg';
 import ArrowIcon from '../assets/graynextarrow.svg';
 
+// --- Animations ---
 const fadeIn = keyframes`
   from { opacity: 0; }
   to { opacity: 1; }
@@ -23,6 +24,8 @@ const slideDown = keyframes`
   to { transform: translateY(100%); }
 `;
 
+// --- Styled Components ---
+
 const Overlay = styled.div`
   position: fixed;
   top: 0; left: 0; width: 100vw; height: 100vh;
@@ -32,20 +35,20 @@ const Overlay = styled.div`
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  animation: ${props => props.$isClosing ? fadeOut : fadeIn} 0.3s ease-in-out forwards;
+  animation: ${({ $isClosing }) => $isClosing ? fadeOut : fadeIn} 0.3s ease-in-out forwards;
 `;
 
-const Modal = styled.div`
+const ModalSheet = styled.div`
   width: 390px;
   height: 508px;
   background: #FFF;
   border-radius: 24px 24px 0 0;
   position: relative;
   box-shadow: 0px -4px 20px rgba(0, 0, 0, 0.1);
-  animation: ${props => props.$isClosing ? slideDown : slideUp} 0.4s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+  animation: ${({ $isClosing }) => $isClosing ? slideDown : slideUp} 0.4s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
 `;
 
-const Header = styled.div`
+const ModalHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -59,6 +62,7 @@ const CloseBtn = styled.button`
   border: none;
   padding: 0;
   cursor: pointer;
+
   img {
     width: 25px;
     height: 25px;
@@ -84,7 +88,12 @@ const ReasonItem = styled.div`
   justify-content: space-between;
   cursor: pointer;
   box-sizing: border-box;
-  background: ${props => props.$isFirst ? '#C5F598' : 'transparent'};
+  background: transparent;
+  transition: background 0.15s;
+
+  &:hover, &:active {
+    background: #C5F598;
+  }
 
   span {
     color: #111;
@@ -129,6 +138,8 @@ const Toast = styled.div`
   }
 `;
 
+// --- Main Component ---
+
 const ReportSystem = ({ isOpen, onClose }) => {
   const [isClosing, setIsClosing] = useState(false);
   const [showToast, setShowToast] = useState(false);
@@ -144,11 +155,12 @@ const ReportSystem = ({ isOpen, onClose }) => {
     "기타"
   ];
 
+  // 그냥 닫기 (신고 없이)
   const handleClose = () => {
     setIsClosing(true);
     setTimeout(() => {
-      onClose();           // setClose() → onClose() 로 수정
       setIsClosing(false);
+      onClose(); // ✅ props의 onClose 호출 (setIsOpen 없음)
     }, 400);
   };
 
@@ -165,38 +177,39 @@ const ReportSystem = ({ isOpen, onClose }) => {
 
   return (
     <>
+      {isOpen && (
+        <Overlay $isClosing={isClosing} onClick={handleClose}>
+          <ModalSheet $isClosing={isClosing} onClick={(e) => e.stopPropagation()}>
 
-      <Overlay $isClosing={isClosing} onClick={handleClose}>
-        <Modal $isClosing={isClosing} onClick={(e) => e.stopPropagation()}>
-          <Header>
-            <TitleArea>
-              <h2>신고 사유 선택</h2>
-            </TitleArea>
-            <CloseBtn onClick={handleClose}>
-              <img src={CloseIcon} alt="close" />
-            </CloseBtn>
-          </Header>
+            <ModalHeader>
+              <TitleArea>
+                <h2>신고 사유 선택</h2>
+              </TitleArea>
+              <CloseBtn onClick={handleClose}>
+                <img src={CloseIcon} alt="close" />
+              </CloseBtn>
+            </ModalHeader>
 
-          <div style={{ padding: "0 24px 16px 24px" }}>
-            <p style={{ color: "#ACACAC", fontSize: "14px", margin: 0 }}>
-              이 게시물을 신고하는 사유를 선택해주세요.
-            </p>
-          </div>
+            <div style={{ padding: "0 24px 16px 24px" }}>
+              <p style={{ color: "#ACACAC", fontSize: "14px", margin: 0 }}>
+                이 게시물을 신고하는 사유를 선택해주세요.
+              </p>
+            </div>
 
-          {reasons.map((text, index) => (
-            <ReasonItem
-              key={index}
-              $isFirst={index === 0}
-              onClick={handleReportAction}
-            >
-              <span>{text}</span>
-              <div className="arrow">
-                <img src={ArrowIcon} alt="arrow" />
-              </div>
-            </ReasonItem>
-          ))}
-        </Modal>
-      </Overlay>
+            {reasons.map((text, index) => (
+              <ReasonItem
+                key={index}
+                onClick={handleReportAction}
+              >
+                <span>{text}</span>
+                <div className="arrow">
+                  <img src={ArrowIcon} alt="arrow" />
+                </div>
+              </ReasonItem>
+            ))}
+          </ModalSheet>
+        </Overlay>
+      )}
 
       {showToast && (
         <Toast>
