@@ -5,10 +5,12 @@ import Graystar from "../assets/graystar.svg";
 import Flag from "../assets/flag.svg";
 import Heart from "../assets/heart.svg";
 import Filledheart from "../assets/fillheart.svg";
+import ReportSystem from "../components/ReportModal";
 
 export default function CourseDescription({ post }) {
   const [liked, setLiked] = useState(false);
   const [flagged, setFlagged] = useState(false);
+  const [isReportOpen, setIsReportOpen] = useState(false);
 
   if (!post) return null;
 
@@ -35,7 +37,7 @@ export default function CourseDescription({ post }) {
     <Card>
       <MainImageWrapper>
         <MainImage src={post.images[0]} alt={post.title} />
-        <FlagButton onClick={() => setFlagged(!flagged)}>
+        <FlagButton onClick={() => setIsReportOpen(true)}>
           <FlagIcon src={flagged ? Greenstar : Flag} alt="flag" />
         </FlagButton>
       </MainImageWrapper>
@@ -83,6 +85,10 @@ export default function CourseDescription({ post }) {
           </SubImageWrapper>
         ))}
       </SubImageRow>
+      <ReportSystem 
+        isOpen={isReportOpen} 
+        onClose={() => setIsReportOpen(false)} 
+      />
     </Card>
   );
 }

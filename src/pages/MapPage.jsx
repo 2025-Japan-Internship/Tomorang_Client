@@ -73,7 +73,7 @@ function MarkerLabel({ post }) {
 }
 
 export default function MapPage() {
-  const [activeNav, setActiveNav] = useState("map");
+  const [activeNav, setActiveNav] = useState(1);
   const [selectedPost, setSelectedPost] = useState(null);
   const [likedPosts, setLikedPosts] = useState({});
   const [userLocation, setUserLocation] = useState(null);
@@ -198,7 +198,7 @@ export default function MapPage() {
         );
       })()}
 
-      <BottomNav activeNav={activeNav} onNavChange={setActiveNav} />
+      <BottomNav activeIndex={activeNav} onNavChange={setActiveNav} />
     </Wrapper>
   );
 }
