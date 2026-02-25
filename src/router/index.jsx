@@ -21,6 +21,7 @@ import ReservationPage from "../pages/ReservationPage";
 import ReservationStatusPage from "../pages/ReservationStatusPage";
 import ReviewWritePage from "../pages/ReviewWritePage";
 import NotificationPage from "../pages/NotificationPage";
+import Chat from "../pages/Chat";
 
 
 
@@ -47,6 +48,7 @@ function Router() {
             <Route path="/course" element={<CourseDescriptionPage />} />
             <Route path="/review-write/:reservationId" element={<ReviewWritePage />} />
             <Route path="/notifications" element={<NotificationPage />} />
+            <Route path="/chat/:postId" element={<Chat />} />
           </Routes>
         </ReservationProvider>
     </BrowserRouter>
