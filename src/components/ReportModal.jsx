@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styled, { keyframes, css } from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import CloseIcon from '../assets/CloseIcon.svg';
 import ArrowIcon from '../assets/graynextarrow.svg';
 
@@ -35,23 +35,24 @@ const Overlay = styled.div`
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  /* 닫힐 때 애니메이션 처리를 위해 단순 transition보다 state 연동 추천 */
-  animation: ${props => props.isClosing ? fadeOut : fadeIn} 0.3s ease-in-out forwards;
+  animation: ${({ $isClosing }) => $isClosing ? fadeOut : fadeIn} 0.3s ease-in-out forwards;
 `;
-const Header = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 22px 21px 9px 21px;
-`;
-const Modal = styled.div`
+
+const ModalSheet = styled.div`
   width: 390px;
   height: 508px;
   background: #FFF;
   border-radius: 24px 24px 0 0;
   position: relative;
   box-shadow: 0px -4px 20px rgba(0, 0, 0, 0.1);
-  animation: ${props => props.isClosing ? slideDown : slideUp} 0.4s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+  animation: ${({ $isClosing }) => $isClosing ? slideDown : slideUp} 0.4s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+`;
+
+const ModalHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 21px 9px 21px;
 `;
 
 const CloseBtn = styled.button`
@@ -76,12 +77,6 @@ const TitleArea = styled.div`
     font-weight: 700;
     margin: 0;
   }
-
-  p {
-    color: #ACACAC;
-    font-size: 14px;
-    margin-top: 8px;
-  }
 `;
 
 const ReasonItem = styled.div`
@@ -93,9 +88,12 @@ const ReasonItem = styled.div`
   justify-content: space-between;
   cursor: pointer;
   box-sizing: border-box;
-  
-  /* 첫 번째 부적절한 내용 배경색 적용 */
-  background: ${props => props.$isFirst ? '#C5F598' : 'transparent'};
+  background: transparent;
+  transition: background 0.15s;
+
+  &:hover, &:active {
+    background: #C5F598;
+  }
 
   span {
     color: #111;
@@ -114,10 +112,9 @@ const ReasonItem = styled.div`
   }
 `;
 
-// 토스트 팝업 (상단 중앙)
 const Toast = styled.div`
   position: fixed;
-  top: 60px;
+  top: 7px;
   left: 50%;
   transform: translateX(-50%);
   width: 348px;
@@ -143,11 +140,11 @@ const Toast = styled.div`
 
 // --- Main Component ---
 
-const ReportSystem = ({isOpen,onClose}) => {
+const ReportSystem = ({ isOpen, onClose }) => {
   const [isClosing, setIsClosing] = useState(false);
   const [showToast, setShowToast] = useState(false);
 
-  if (!isOpen) return null;
+  if (!isOpen && !showToast) return null;
 
   const reasons = [
     "부적절한 내용 또는 사진",
@@ -158,23 +155,23 @@ const ReportSystem = ({isOpen,onClose}) => {
     "기타"
   ];
 
-
-
+  // 그냥 닫기 (신고 없이)
   const handleClose = () => {
     setIsClosing(true);
     setTimeout(() => {
-      setIsOpen(false);
       setIsClosing(false);
-    }, 400); // 애니메이션 시간과 동일하게 설정
+      onClose(); // ✅ props의 onClose 호출 (setIsOpen 없음)
+    }, 400);
   };
 
+  // 신고 사유 선택 → 모달 닫고 토스트 띄우기
   const handleReportAction = () => {
     setIsClosing(true);
     setTimeout(() => {
-      onClose();
       setIsClosing(false);
+      onClose(); // ✅ 모달 닫기
       setShowToast(true);
-      setTimeout(() => setShowToast(false), 3000);
+      setTimeout(() => setShowToast(false), 3000); // 3초 후 토스트 제거
     }, 400);
   };
 
@@ -182,37 +179,26 @@ const ReportSystem = ({isOpen,onClose}) => {
     <>
       {isOpen && (
         <Overlay $isClosing={isClosing} onClick={handleClose}>
-          <Modal $isClosing={isClosing} onClick={(e) => e.stopPropagation()}>
-            
-            {/* 🔹 헤더 (제목 + 닫기 버튼 한 줄) */}
-            <Header>
+          <ModalSheet $isClosing={isClosing} onClick={(e) => e.stopPropagation()}>
+
+            <ModalHeader>
               <TitleArea>
                 <h2>신고 사유 선택</h2>
               </TitleArea>
-  
               <CloseBtn onClick={handleClose}>
                 <img src={CloseIcon} alt="close" />
               </CloseBtn>
-            </Header>
-  
-            {/* 🔹 설명 텍스트 */}
+            </ModalHeader>
+
             <div style={{ padding: "0 24px 16px 24px" }}>
-              <p
-                style={{
-                  color: "#ACACAC",
-                  fontSize: "14px",
-                  margin: 0,
-                }}
-              >
+              <p style={{ color: "#ACACAC", fontSize: "14px", margin: 0 }}>
                 이 게시물을 신고하는 사유를 선택해주세요.
               </p>
             </div>
-  
-            {/* 🔹 신고 사유 리스트 */}
+
             {reasons.map((text, index) => (
               <ReasonItem
                 key={index}
-                $isFirst={index === 0}
                 onClick={handleReportAction}
               >
                 <span>{text}</span>
@@ -221,16 +207,13 @@ const ReportSystem = ({isOpen,onClose}) => {
                 </div>
               </ReasonItem>
             ))}
-          </Modal>
+          </ModalSheet>
         </Overlay>
       )}
-  
-      {/* 🔹 토스트 */}
+
       {showToast && (
         <Toast>
-          <p>
-            신고가 정상적으로 접수되었습니다. 해당가이드는 숨김처리 됩니다.
-          </p>
+          <p>신고가 정상적으로 접수되었습니다. 해당가이드는 숨김처리 됩니다.</p>
         </Toast>
       )}
     </>
