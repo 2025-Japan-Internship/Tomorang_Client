@@ -67,7 +67,6 @@ export default function ReservationPage() {
           </PostInfo>
         </PostCard>
 
-        <Divider />
 
         {/* ── 안내 문구 ── */}
         <GuideArea>
@@ -75,7 +74,7 @@ export default function ReservationPage() {
           <GuideDesc>예약 창에서 예약 내용을 확인해 볼 수 있어요</GuideDesc>
         </GuideArea>
 
-        <Divider />
+        <Gap1/>
 
         {/* ── 날짜 선택 ── */}
         <Section>
@@ -103,7 +102,7 @@ export default function ReservationPage() {
           </DateRow>
         </Section>
 
-        <Divider />
+        <Gap/>
 
         {/* ── 시간 선택 ── */}
         <Section>
@@ -131,7 +130,7 @@ export default function ReservationPage() {
           </TimeGrid>
         </Section>
 
-        <Divider />
+        <Gap/>
 
         {/* ── 인원 선택 ── */}
         <Section>
@@ -144,7 +143,6 @@ export default function ReservationPage() {
             min={1}
             max={post.maxParticipants}
           />
-          <CounterDivider />
           <CounterInput
             label="어린이"
             description="만 13세 미만"
@@ -155,7 +153,7 @@ export default function ReservationPage() {
           />
         </Section>
 
-        <Divider />
+        <Gap/>
 
         {/* ── 요청 사항 ── */}
         <Section>
@@ -197,7 +195,7 @@ const Wrapper = styled.div`
 `;
 
 const Content = styled.div`
-  padding: 16px 21px 40px;
+  padding: 0 21px 21px;
   display: flex;
   flex-direction: column;
   gap: 0;
@@ -209,6 +207,11 @@ const PostCard = styled.div`
   align-items: center;
   gap: 16px;
   height: 152px;
+  border-bottom: solid 1px #F3F4F3;
+  padding-top:3px;
+  padding-bottom:3px;
+  margin-bottom: 21px;
+  
 `;
 
 const PostImage = styled.img`
@@ -280,11 +283,13 @@ const FinalPrice = styled.span`
   color: #111;
 `;
 
-const Divider = styled.div`
+const Gap = styled.div`
   width: 100%;
-  height: 1px;
-  background: #F3F4F3;
-  margin: 20px 0;
+  height: 26px;
+`;
+const Gap1 = styled.div`
+  width: 100%;
+  height: 33px;
 `;
 
 /* 안내 */
@@ -376,7 +381,7 @@ const TimeCard = styled.div`
   height: 72px;
   border-radius: 12px;
   border: 1px solid ${({ $selected, $closed }) =>
-    $closed ? "#DADADA" : $selected ? "#B1DD89" : "#B1DD89"};
+    $closed ? "#DADADA" : $selected ? "#B1DD89" : "#DADADA"};
   background: ${({ $closed }) => ($closed ? "#F3F4F3" : "#FFF")};
   display: flex;
   flex-direction: column;
@@ -390,7 +395,8 @@ const TimeText = styled.div`
   font-weight: 500;
   font-size: 14px;
   letter-spacing: -0.49px;
-  color: ${({ $closed }) => ($closed ? "#ACACAC" : "#94B872")};
+  color: ${({ $selected, $closed }) =>
+    $closed ? "#ACACAC" : $selected ? "#94B872" : "#111"};
   text-align: center;
 `;
 
@@ -398,7 +404,8 @@ const TimeSession = styled.div`
   font-weight: 400;
   font-size: 10px;
   letter-spacing: -0.35px;
-  color: ${({ $closed }) => ($closed ? "#ACACAC" : "#94B872")};
+  color: ${({ $selected, $closed }) =>
+    $closed ? "#ACACAC" : $selected ? "#94B872" : "#ACACAC"};
   text-align: center;
 `;
 
@@ -408,12 +415,6 @@ const EmptySlot = styled.div`
   padding: 12px 0;
 `;
 
-/* 인원 */
-const CounterDivider = styled.div`
-  width: 100%;
-  height: 1px;
-  background: #F3F4F3;
-`;
 
 /* 요청사항 */
 const RequestInput = styled.textarea`
@@ -424,6 +425,7 @@ const RequestInput = styled.textarea`
   background: #fff;
   padding: 12px 14px;
   box-sizing: border-box;
+  margin-bottom: 16px;
   resize: none;
   font-family: "Pretendard", sans-serif;
   font-weight: 400;
@@ -437,14 +439,17 @@ const RequestInput = styled.textarea`
 const ReserveBtn = styled.button`
   width: 100%;
   height: 52px;
-  border-radius: 100px;
-  background: ${({ disabled }) => (disabled ? "#F3F4F3" : "#C5F598")};
+  border-radius: 12px;
+  background: ${({ disabled }) => (disabled ? "#EDFCDF" : "#C5F598")};
   border: none;
   cursor: ${({ disabled }) => (disabled ? "default" : "pointer")};
   font-family: "Pretendard", sans-serif;
-  font-weight: 700;
-  font-size: 16px;
-  color: ${({ disabled }) => (disabled ? "#ACACAC" : "#111")};
-  margin-top: 24px;
+  text-align: center;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  color: ${({ disabled }) => (disabled ? "#fff" : "#111")};
+  margin-top: 18px;
   transition: background 0.2s;
 `;
