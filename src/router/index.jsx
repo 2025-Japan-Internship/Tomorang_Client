@@ -22,6 +22,7 @@ import ReservationStatusPage from "../pages/ReservationStatusPage";
 import ReviewWritePage from "../pages/ReviewWritePage";
 import NotificationPage from "../pages/NotificationPage";
 import GuideProfilePage from "../pages/GuideProfilePage";
+import ReservationListPage from "../pages/ReservationListPage";
 
 
 
@@ -49,6 +50,7 @@ function Router() {
             <Route path="/review-write/:reservationId" element={<ReviewWritePage />} />
             <Route path="/notifications" element={<NotificationPage />} />
             <Route path="/guide/:id" element={<GuideProfilePage />} />
+            <Route path="/book" element={<ReservationListPage />} />
           </Routes>
         </ReservationProvider>
     </BrowserRouter>
