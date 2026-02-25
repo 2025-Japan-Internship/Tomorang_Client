@@ -140,7 +140,7 @@ const TitleRow = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 20px;
+  margin-bottom: 6px;
 `;
 
 const TitleGroup = styled.div`
@@ -196,7 +196,7 @@ const SaveText = styled.span`
     font-style: normal;
     font-weight: 500;
     line-height: 22px; /* 183.333% */
-letter-spacing: -0.7px;
+    letter-spacing: -0.7px;
 `;
 
 const PriceRatingRow = styled.div`
@@ -211,10 +211,15 @@ const PriceGroup = styled.div`
 `;
 
 const OriginalPrice = styled.span`
-  font-size: 12px;
-  color: #ccc;
-  text-decoration: line-through;
-  margin-bottom: 2px;
+  color: #DADADA;
+  font-feature-settings: 'liga' off, 'clig' off;
+  font-family: Pretendard;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.01px;
+  text-decoration-line: line-through;
 `;
 
 const CurrentPriceArea = styled.div`
@@ -224,9 +229,14 @@ const CurrentPriceArea = styled.div`
 `;
 
 const SaleLabel = styled.span`
-  font-size: 16px;
+  color: #B1DD89;
+  font-feature-settings: 'liga' off, 'clig' off;
+  font-family: Pretendard;
+  font-size: 18px;
+  font-style: normal;
   font-weight: 700;
-  color: #8ADF5C;
+  line-height: normal;
+  letter-spacing: -0.018px;
 `;
 
 const CurrentPrice = styled.span`

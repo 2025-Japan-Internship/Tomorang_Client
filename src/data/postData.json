@@ -4,13 +4,19 @@
     "userId": "guide_yuki",
     "images": [
       "/assets/postImages/cose1.svg",
+      "/assets/postImages/cose1.svg",
+      "/assets/postImages/cose1.svg",
+      "/assets/postImages/cose1.svg",
+      "/assets/postImages/cose1.svg",
+      "/assets/postImages/cose1.svg",
+      "/assets/postImages/cose1.svg",
       "/assets/postImages/fuji_2.jpg",
       "/assets/postImages/fuji_3.jpg"
     ],
     "title": "후지산 주위 투어",
     "subtitle": "관광객이 붐비지 않는 포토스팟",
     "price": "32,000",
-    "discountRate": 0,
+    "discountRate": 50,
     "duration": "4시간",
     "maxParticipants": 6,
     "rating": 4.8,
@@ -46,9 +52,9 @@
     ],
     "contentBlocks": [
       { "type": "text", "value": "후지산 주변을 천천히 둘러볼 예정입니다." },
-      { "type": "image", "value": "/assets/postContents/fuji1.jpg" },
+      { "type": "image", "value": "/assets/postImages/cose1.svg" },
       { "type": "text", "value": "이곳에서 일출을 감상합니다." },
-      { "type": "image", "value": "/assets/postContents/fuji2.jpg" },
+      { "type": "image", "value": "/assets/postImages/cose1.svg" },
       { "type": "text", "value": "이후 마을을 돌아다닐 예정입니다." }
     ],
     "createdAt": "2026-02-21T10:23:00Z",

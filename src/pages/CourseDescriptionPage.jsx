@@ -1,35 +1,55 @@
-import React, { useState, useMemo } from "react";
-import { useLocation } from "react-router-dom";
+import React, { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Header from "../components/Header";
 import CourseDescription from "../components/CourseDescription";
 import CourseTabMenu from "../components/mainComponents/CourseTabMenu";
-import OtherCourse from "../components/OtherCourse";
 import postData from "../data/postData.json";
+import PostCard from "../components/mainComponents/Postcard";
+import Section from "../components/mainComponents/Section";
+import ReserveButton from "../components/ReserveButton";
+import ContentBlocks from "../components/ContentBlocks";
+import OpenButton from "../components/OpenButton";
+import ReviewSummary from "../components/ReviewSummary";
+import ReviewCard from "../components/ReviewCard1";
+import reviews from "../data/reviews.json";
+import GuideTab from "../components/GuideTab";
+import guideData from "../data/guideData.json";
+import GuideDescriptionCard from "../components/GuideDescriptionCard";
 
-export default function CourseDescriptionPage() { // ← allPosts prop 제거
+export default function CourseDescriptionPage() {
   const { state } = useLocation();
+  const navigate = useNavigate();
   const post = state?.post;
 
   const [activeTab, setActiveTab] = useState("코스설명");
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [isReviewExpanded, setIsReviewExpanded] = useState(false);
 
-  const filteredOtherPosts = useMemo(() => {
-    if (!post) return [];
+  const handleNext = () => {
+    navigate("/make-traveler-profile", { state: { interests: post?.interests } });
+  };
 
-    return postData.filter((item) =>
-      String(item.userId) === String(post.userId) &&
-      String(item.postId) !== String(post.postId)
-    );
-  }, [post]);
+  const SCROLL_ROW = {
+    display: "flex",
+    gap: 12,
+    overflowX: "auto",
+    scrollbarWidth: "none",
+    msOverflowStyle: "none",
+    paddingBottom: 2,
+  };
+
+  const trendingPosts = postData.filter(
+    (p) => p.userId === post?.userId && p.postId !== post?.postId
+  );
 
   if (!post) return <Error>데이터를 불러올 수 없습니다.</Error>;
 
   return (
     <PageWrapper>
       <Header coment={post.title} />
-      
       <CourseDescription post={post} />
-      
+
       <TabSection>
         <CourseTabMenu activeTab={activeTab} onTabChange={setActiveTab} />
       </TabSection>
@@ -37,26 +57,85 @@ export default function CourseDescriptionPage() { // ← allPosts prop 제거
       <ContentArea>
         {activeTab === "코스설명" && (
           <>
-            <DetailSection>
-              <DetailTitle>{post.title}</DetailTitle>
-              <Divider />
-              <DetailText>
-                애니메이션과 게임의 성지, <strong>아키하바라</strong>에서<br />
-                진짜 보물 같은 레트로 피규어를 찾고 싶다면?
-              </DetailText>
-              <DetailMainImg src={post.images[0]} />
-            </DetailSection>
+            <CollapsibleContainer $isExpanded={isExpanded}>
+              <DetailSection>
+                <DetailTitle>{post.title}</DetailTitle>
+                <ContentBlocks blocks={post.contentBlocks} />
+              </DetailSection>
 
-            {/* 🌟 가이드의 다른 코스 섹션 */}
-            <OtherCourseSection>
-               <OtherCourse otherPosts={filteredOtherPosts} />
-            </OtherCourseSection>
+              {!isExpanded && (
+                <FadeOverlay>
+                  <OpenButtonWrapper>
+                    <OpenButton onClick={() => setIsExpanded(true)}>
+                      상품정보 펼쳐보기
+                    </OpenButton>
+                  </OpenButtonWrapper>
+                </FadeOverlay>
+              )}
+            </CollapsibleContainer>
           </>
         )}
 
-        {activeTab === "리뷰" && <PlaceholderText>준비 중인 리뷰 페이지입니다. ⭐️</PlaceholderText>}
-        {activeTab === "가이드" && <PlaceholderText>준비 중인 가이드 페이지입니다. 💡</PlaceholderText>}
-      </ContentArea>
+        {activeTab === "리뷰" && (
+          <>
+            <SummarySection>
+              <ReviewSummary
+                rating={post.rating || 0}
+                reviewCount={post.reviewCount || 0}
+              />
+            </SummarySection>
+
+            <ReviewCollapsible $isExpanded={isReviewExpanded}>
+              <ReviewSection>
+                {reviews
+                  .filter((review) => review.postId === post.postId)
+                  .map((review) => (
+                    <React.Fragment key={review.reviewId}>
+                      <ReviewCard review={review} />
+                    </React.Fragment>
+                  ))}
+                {reviews.filter((r) => r.postId === post.postId).length === 0 && (
+                  <PlaceholderText>아직 리뷰가 없습니다. 🥲</PlaceholderText>
+                )}
+              </ReviewSection>
+
+              {!isReviewExpanded && (
+                <ReviewFadeOverlay>
+                  <OpenButtonWrapper>
+                    <OpenButton onClick={() => setIsReviewExpanded(true)}>
+                      리뷰 더보기
+                    </OpenButton>
+                  </OpenButtonWrapper>
+                </ReviewFadeOverlay>
+              )}
+            </ReviewCollapsible>
+          </>
+        )}
+
+          {activeTab === "가이드" && (() => {
+            const guide = guideData.find((g) => g.postIds.includes(post.postId));
+            return guide ? (
+              <GuideBg>
+                <GuideTab guide={guide} />
+                <GuideDescriptionCard guide={guide} />
+              </GuideBg>
+            ) : (
+              <PlaceholderText>가이드 정보를 찾을 수 없습니다. 💡</PlaceholderText>
+            );
+          })()}
+        </ContentArea>
+        {activeTab !== "가이드" && (
+        <Section title="이 가이드의 다른코스">
+          <div style={SCROLL_ROW}>
+            {trendingPosts.map((post) => (
+              <PostCard key={post.postId} post={post} />
+            ))}
+          </div>
+        </Section>
+      )}
+      <Bottom>
+        <ReserveButton isValid={true} onClick={handleNext} />
+      </Bottom>
     </PageWrapper>
   );
 }
@@ -70,6 +149,54 @@ const PageWrapper = styled.div`
   display: flex;
   flex-direction: column;
 `;
+const GuideBg = styled.div`
+  background-color: #F3F4F3;
+  padding: 12px 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+`;
+const CollapsibleContainer = styled.div`
+  position: relative;
+  max-height: ${({ $isExpanded }) => ($isExpanded ? "none" : "450px")};
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out;
+`;
+
+const FadeOverlay = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 160px;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.95) 60%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+`;
+
+const OpenButtonWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 30px;
+`;
+
+const DetailSection = styled.div`
+  text-align: center;
+  padding: 24px 16px 20px;
+`;
+
+const DetailTitle = styled.h3`
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 16px;
+`;
 
 const TabSection = styled.div`
   padding: 0 16px;
@@ -79,39 +206,10 @@ const ContentArea = styled.div`
   flex: 1;
 `;
 
-const DetailSection = styled.div`
-  text-align: center;
-  padding: 24px 16px;
-`;
-
-const DetailTitle = styled.h3`
-  font-size: 18px;
-  font-weight: 700;
-  margin-bottom: 20px;
-`;
-
-const Divider = styled.div`
-  width: 1px;
-  height: 40px;
-  background: #111;
-  margin: 0 auto 20px;
-`;
-
-const DetailText = styled.p`
-  font-size: 15px;
-  line-height: 1.6;
-  margin-bottom: 30px;
-  strong { font-weight: 800; color: #8ADF5C; }
-`;
-
-const DetailMainImg = styled.img`
-  width: 100%;
-  border-radius: 12px;
-  margin-bottom: 20px;
-`;
-
-const OtherCourseSection = styled.div`
-  border-top: 8px solid #f8f8f8; /* 섹션 구분선 */
+const Bottom = styled.div`
+  display: flex;
+  justify-content: center;
+  padding: 10px 0 21px;
 `;
 
 const PlaceholderText = styled.div`
@@ -124,4 +222,39 @@ const Error = styled.div`
   width: 390px;
   margin: 100px auto;
   text-align: center;
+`;
+
+const ReviewSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  background-color: #F3F4F3;
+  gap: 8px;
+  padding: 8px 0;
+`;
+const SummarySection = styled.div`
+  background-color: #fff;
+  padding: 16px;
+`;
+const ReviewCollapsible = styled.div`
+  position: relative;
+  max-height: ${({ $isExpanded }) => ($isExpanded ? "none" : "700px")};
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out;
+`;
+
+const ReviewFadeOverlay = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 160px;
+  background: linear-gradient(
+    to bottom,
+    rgba(243, 244, 243, 0) 0%,
+    rgba(243, 244, 243, 0.95) 60%,
+    rgba(243, 244, 243, 1) 100%
+  );
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
 `;

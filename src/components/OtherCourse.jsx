@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import Nextarrow from "../assets/nextarrow.svg";
+import Graynextarrow from "../assets/graynextarrow.svg"
 
 export default function OtherCourse({ otherPosts }) {
   // 데이터가 없으면 영역 자체를 렌더링하지 않음
@@ -10,7 +12,7 @@ export default function OtherCourse({ otherPosts }) {
       <Header>
         <Title>이 가이드의 다른코스</Title>
         <MoreBtn>
-          더보기 <Chevron>{`>`}</Chevron>
+          더보기 <Chevron src={Graynextarrow} alt="next" />
         </MoreBtn>
       </Header>
 
@@ -22,7 +24,7 @@ export default function OtherCourse({ otherPosts }) {
             </ImageWrapper>
             <CourseTitleRow>
               <CourseTitle>{post.title}</CourseTitle>
-              <TitleChevron>{`>`}</TitleChevron>
+              <TitleChevron src={Nextarrow} alt="next" />
             </CourseTitleRow>
             <CourseSubtitle>{post.subtitle}</CourseSubtitle>
             <CoursePrice>
@@ -68,9 +70,9 @@ const MoreBtn = styled.button`
   gap: 4px;
 `;
 
-const Chevron = styled.span`
-  font-size: 10px;
-  color: #ccc;
+const Chevron = styled.img`
+  width: 10px;
+  height: 10px;
 `;
 
 const ScrollContainer = styled.div`
@@ -118,11 +120,10 @@ const CourseTitle = styled.h3`
   text-overflow: ellipsis;
 `;
 
-const TitleChevron = styled.span`
-  font-size: 12px;
-  color: #111;
+const TitleChevron = styled.img`
+  width: 12px;
+  height: 12px;
 `;
-
 const CourseSubtitle = styled.p`
   font-size: 12px;
   color: #999;
