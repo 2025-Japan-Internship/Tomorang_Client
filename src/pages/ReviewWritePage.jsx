@@ -221,7 +221,7 @@ const Wrapper = styled.div`
 `;
 
 const Content = styled.div`
-  padding: 16px 21px 60px;
+  padding: 16px 21px 20px;
   display: flex;
   flex-direction: column;
   gap: 0;
@@ -313,7 +313,7 @@ const SectionTitle = styled.div`
 const StarRow = styled.div`
   display: flex;
   justify-content: center;
-  gap: 4px;
+  gap: 0px;
 `;
 
 const StarBtn = styled.button`
@@ -436,6 +436,8 @@ const ReviewTextArea = styled.textarea`
   &::placeholder {
     color: #ACACAC;
   }
+  
+  margin-bottom: 10px;
 `;
 
 /* 등록 버튼 */
@@ -447,10 +449,10 @@ const SubmitBtn = styled.button`
   border: none;
   cursor: ${({ $disabled }) => ($disabled ? "default" : "pointer")};
   font-family: "Pretendard", sans-serif;
-  font-weight: 700;
-  font-size: 16px;
-  color: ${({ $disabled }) => ($disabled ? "#ACACAC" : "#111")};
-  margin-top: 8px;
-  align-self: center;
-  transition: background 0.15s;
+  color: ${({ $disabled }) => ($disabled ? "#fff" : "#111")};
+  margin-top: 4px;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
 `;

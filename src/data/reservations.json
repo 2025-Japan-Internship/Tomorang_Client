@@ -65,11 +65,11 @@
     "myReview": {
       "reviewId": 10,
       "rating": 4.2,
-      "content": "도쿄 여행 오면 꼭 한 번은 가야 한다는 아키하바라.\n근래 마냥 가보니까 태양이 너무 많아서 어디부터 들어가야 할지 진짜 헤맸어요.\n저는 90년대-2000년대 초반 레트로 피규어를 찾고 있었는데, 좋게 찾으려면 많고 좋았을 것을 같아요.",
+      "content": "도쿄 여행 오면 꼭 한 번은 가야 한다는 아키하바라.\n \n 근래 마냥 가보니까 태양이 너무 많아서 어디부터 \n 들어가야 할지 진짜 헤맸어요.\n  \n 저는 90년대-2000년대 초반 레트로 피규어를 찾고 있었는데 \n  \n혼자였으면 절대 못 찾았을 것 같아요.",
       "images": [
-        "/assets/reviewImages/rev1.jpg",
-        "/assets/reviewImages/rev2.jpg",
-        "/assets/reviewImages/rev3.jpg"
+        "/assets/reviewImages/review1_1.svg",
+        "/assets/reviewImages/review1_2.svg",
+        "/assets/reviewImages/review1_3.svg"
       ],
       "createdAt": "2026-02-19T10:00:00Z"
     },

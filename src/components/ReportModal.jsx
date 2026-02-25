@@ -105,7 +105,7 @@ const ReasonItem = styled.div`
 
 const Toast = styled.div`
   position: fixed;
-  top: 60px;
+  top: 7px;
   left: 50%;
   transform: translateX(-50%);
   width: 348px;
@@ -133,7 +133,7 @@ const ReportSystem = ({ isOpen, onClose }) => {
   const [isClosing, setIsClosing] = useState(false);
   const [showToast, setShowToast] = useState(false);
 
-  if (!isOpen) return null;
+  if (!isOpen && !showToast) return null;
 
   const reasons = [
     "부적절한 내용 또는 사진",
@@ -152,18 +152,20 @@ const ReportSystem = ({ isOpen, onClose }) => {
     }, 400);
   };
 
+  // 신고 사유 선택 → 모달 닫고 토스트 띄우기
   const handleReportAction = () => {
     setIsClosing(true);
     setTimeout(() => {
-      onClose();
       setIsClosing(false);
+      onClose(); // ✅ 모달 닫기
       setShowToast(true);
-      setTimeout(() => setShowToast(false), 3000);
+      setTimeout(() => setShowToast(false), 3000); // 3초 후 토스트 제거
     }, 400);
   };
 
   return (
     <>
+
       <Overlay $isClosing={isClosing} onClick={handleClose}>
         <Modal $isClosing={isClosing} onClick={(e) => e.stopPropagation()}>
           <Header>

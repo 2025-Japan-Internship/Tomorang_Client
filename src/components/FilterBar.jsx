@@ -166,7 +166,7 @@ const TagChip = styled.button`
   line-height: 22px;
   cursor: pointer;
 
-  order: ${({ selected }) => (selected ? "-1" : "0")};
+  /* order: -1 속성을 삭제하여 순서가 바뀌지 않도록 설정했습니다. */
   transition: all 0.2s ease;
 
   &:focus {

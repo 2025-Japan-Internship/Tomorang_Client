@@ -1,12 +1,8 @@
 /**
- * StatusHeader - 예약 상태 상단 영역 (수정본)
- *
- * 사용법:
- * <StatusHeader status="PENDING" />
- * status: "PENDING" | "CONFIRMED" | "REJECTED" | "COMPLETED"
+ * StatusHeader - 예약 상태 상단 영역
  */
 
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import CheckIcon from "../../assets/bookStatusIcons/checkIcon.svg";
 import XIcon from "../../assets/bookStatusIcons/xIcon.svg";
 import StarOutlineIcon from "../../assets/bookStatusIcons/starOutlineIcon.svg";
@@ -50,16 +46,21 @@ const STEPS = ["안내자 확인", "예약 확정", "투어 완료"];
 
 export default function StatusHeader({ status }) {
   const config = STATUS_CONFIG[status] || STATUS_CONFIG.PENDING;
+  const isPending = status === "PENDING";
 
   return (
     <Wrapper>
       <IconCircle $bg={config.iconBg}>
-        {config.icon && <img src={config.icon} alt="status" width={28} height={28} />}
+        {isPending ? (
+          <Spinner />
+        ) : (
+          config.icon && <img src={config.icon} alt="status" width={28} height={28} />
+        )}
       </IconCircle>
+
       <Title>{config.title}</Title>
       <Desc>{config.desc}</Desc>
 
-      {/* ── 스텝 바: [circle - line - circle - line - circle] ── */}
       <StepBarWrapper>
         {STEPS.map((label, idx) => {
           const isDone = config.isRejected ? idx === 0 : idx <= config.step;
@@ -68,7 +69,6 @@ export default function StatusHeader({ status }) {
 
           return (
             <StepItem key={label}>
-              {/* 원 + 라벨 */}
               <StepCircle $done={isDone} $rejected={isRejectedStep}>
                 {isDone && !isRejectedStep && (
                   <img src={CheckIcon} alt="done" width={12} height={12} />
@@ -76,10 +76,9 @@ export default function StatusHeader({ status }) {
                 {isRejectedStep && (
                   <img src={XIcon} alt="rejected" width={12} height={12} />
                 )}
+                {!isDone && <InnerDot />}
               </StepCircle>
-              <StepLabel>{label}</StepLabel>
-
-              {/* 원 오른쪽 연결선 (마지막 스텝 제외) */}
+              <StepLabel $done={isDone}>{label}</StepLabel>
               {!isLast && (
                 <StepLine $done={!config.isRejected && idx < config.step} />
               )}
@@ -91,14 +90,17 @@ export default function StatusHeader({ status }) {
   );
 }
 
-/* ─── Styled Components ─── */
+const spin = keyframes`
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+`;
 
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 10px;
-  padding: 24px 0 0;
+  padding: 24px 0 30px;
 `;
 
 const IconCircle = styled.div`
@@ -109,6 +111,15 @@ const IconCircle = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+`;
+
+const Spinner = styled.div`
+  width: 23px;
+  height: 23px;
+  border: 4px solid rgba(255, 255, 255);
+  border-top-color: #C5F598;
+  border-radius: 50%;
+  animation: ${spin} 0.9s linear infinite;
 `;
 
 const Title = styled.div`
@@ -134,11 +145,11 @@ const Desc = styled.div`
 
 const StepBarWrapper = styled.div`
   display: flex;
-  align-items: flex-start;   /* 원+라벨 상단 정렬 */
-  width: 100%;
-  padding: 0 20px;
+  align-items: flex-start;
+  width: 124%;
+  padding: 0 -20px;
   box-sizing: border-box;
-  margin-top: 16px;
+  margin-top: 20px;
 `;
 
 const StepItem = styled.div`
@@ -150,12 +161,12 @@ const StepItem = styled.div`
 `;
 
 const StepCircle = styled.div`
-  width: 24px;
-  height: 24px;
+  width: 25px;
+  height: 25px;
   flex-shrink: 0;
   border-radius: 50%;
   background: ${({ $done, $rejected }) =>
-    $rejected ? "#FFCBA4" : $done ? "#C5F598" : "#F3F4F3"};
+    $rejected ? "#FFCBA4" : $done ? "#C5F598" : "#DADADA"};
   border: 2px solid ${({ $done, $rejected }) =>
     $rejected ? "#FFCBA4" : $done ? "#C5F598" : "#DADADA"};
   display: flex;
@@ -165,22 +176,9 @@ const StepCircle = styled.div`
   z-index: 1;
 `;
 
-/**
- * StepLine: 원과 원 사이를 연결하는 선.
- * StepItem 안에 position: absolute 로 오른쪽 절반부터 다음 StepItem 왼쪽 절반까지.
- * → absolute 대신 StepItem 을 flex row 로 바꿔서 처리하는 게 더 안전.
- *
- * 수정된 방식:
- * StepItem = flex column
- *   TopRow = flex row, width 100%, align-items center
- *     LeftLine (flex:1, 첫 번째 아이템은 투명)
- *     Circle
- *     RightLine (flex:1, 마지막 아이템은 투명)
- *   Label
- */
 const StepLine = styled.div`
   position: absolute;
-  top: 11px; /* circle 높이 24px / 2 - line 높이 1px = 11px */
+  top: 11px;
   left: 50%;
   width: 100%;
   height: 2px;
@@ -188,11 +186,23 @@ const StepLine = styled.div`
   z-index: 0;
 `;
 
+const InnerDot = styled.div`
+  width: 10px;
+  height: 10px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #fff;
+`;
+
 const StepLabel = styled.div`
   font-family: "Pretendard", sans-serif;
-  font-weight: 400;
-  font-size: 10px;
-  color: #ACACAC;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.012px;
+  color: ${({ $done }) =>
+    $done ? "#4E4E4E" : "#ACACAC"};
   text-align: center;
   white-space: nowrap;
   margin-top: 6px;
