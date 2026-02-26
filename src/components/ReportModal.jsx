@@ -165,15 +165,19 @@ const ReportSystem = ({ isOpen, onClose }) => {
   };
 
   // 신고 사유 선택 → 모달 닫고 토스트 띄우기
-  const handleReportAction = () => {
+    const handleReportAction = () => {
     setIsClosing(true);
     setTimeout(() => {
-      setIsClosing(false);
-      onClose(); // ✅ 모달 닫기
-      setShowToast(true);
-      setTimeout(() => setShowToast(false), 3000); // 3초 후 토스트 제거
+        setIsClosing(false);
+        onClose();
+        setShowToast(true);
+        setTimeout(() => setShowToast(false), 3000);
     }, 400);
-  };
+    
+    setTimeout(() => {
+        navigate('/main');
+    }, 400);
+    };
 
   return (
     <>
