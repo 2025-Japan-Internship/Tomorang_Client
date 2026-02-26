@@ -24,6 +24,7 @@ import NotificationPage from "../pages/NotificationPage";
 import Chat from "../pages/Chat";
 import GuideProfilePage from "../pages/GuideProfilePage";
 import ReservationListPage from "../pages/ReservationListPage";
+import SearchResultPage from "../pages/SearchResultPage";
 
 
 
@@ -53,6 +54,7 @@ function Router() {
             <Route path="/chat/:postId" element={<Chat />} />
             <Route path="/guide/:id" element={<GuideProfilePage />} />
             <Route path="/book" element={<ReservationListPage />} />
+            <Route path="/search-result" element={<SearchResultPage />} />
           </Routes>
         </ReservationProvider>
     </BrowserRouter>
